@@ -1,0 +1,865 @@
+[Fri Mar 25 16:28:31 2005] : <font color='#ff0000'><b>Welcome to <a href='http://www.openrpg.com'>OpenRPG</a> version 1.6.1...  </b></font><br>
+[Fri Mar 25 16:28:31 2005] : <font color='#0000ff'><br>Emote commands:</font><br>
+[Fri Mar 25 16:28:31 2005] : <font color='#0000ff'>/date</font> - Display the local and GMT time and date.<br>
+[Fri Mar 25 16:28:31 2005] : <font color='#0000ff'>/dieroller roller</font> - Set your dieroller or list the available rollers.<br>
+[Fri Mar 25 16:28:31 2005] : <font color='#0000ff'>/font <fontname></font> - Sets the font.<br>
+[Fri Mar 25 16:28:31 2005] : <font color='#0000ff'>/fontsize <size></font> - Sets the size of your fonts.  Recomended 8 or better for the size.<br>
+[Fri Mar 25 16:28:31 2005] : <font color='#0000ff'>/help</font> - Displays a list of emote commands.<br>
+[Fri Mar 25 16:28:31 2005] : <font color='#0000ff'>/i or /i player_id_number</font> - Ignore user associated with that player ID.<br>
+[Fri Mar 25 16:28:31 2005] : <font color='#0000ff'>/lines [number]</font> - View or set the maximum number of lines shown in chat.<br>
+[Fri Mar 25 16:28:31 2005] : <font color='#0000ff'>/load <filename></font> - Loads settings from another ini file from the myfiles directory.<br>
+[Fri Mar 25 16:28:31 2005] : <font color='#0000ff'>/log [ on | off | to <em>filename</em> ]</font> - Check log state, additionally turn logging on, off, or set the log filename prefix.<br>
+[Fri Mar 25 16:28:31 2005] : <font color='#0000ff'>/me</font> - Alias for **yourname.<br>
+[Fri Mar 25 16:28:31 2005] : <font color='#0000ff'>/moderate [ on | off ]</font> - Show who can speak in a moderated room, or turn room moderation on or off.<br>
+[Fri Mar 25 16:28:31 2005] : <font color='#0000ff'>/moderate player_id,...=on | off</font> - Give people the ability to speak in a moderated room, or revoke it.<br>
+[Fri Mar 25 16:28:31 2005] : <font color='#0000ff'>/name or /nick your_name</font> - Change your name.<br>
+[Fri Mar 25 16:28:31 2005] : <font color='#0000ff'>/ping</font> - Ask for a response from the server.<br>
+[Fri Mar 25 16:28:31 2005] : <font color='#0000ff'>/purge</font> - Purge history older than your buffersize.<br>
+[Fri Mar 25 16:28:31 2005] : <font color='#0000ff'>/role [player_id = GM | Player | Lurker]</font> - Get player roles from ther server, or change the role of a player.<br>
+[Fri Mar 25 16:28:31 2005] : <font color='#0000ff'>/set [setting[=value]]</font> - Displays one or all settings, or sets a setting.<br>
+[Fri Mar 25 16:28:31 2005] : <font color='#0000ff'>/status your_status</font> - Set your online status (afk,away,etc..).<br>
+[Fri Mar 25 16:28:31 2005] : <font color='#0000ff'>/time</font> - See /date.<br>
+[Fri Mar 25 16:28:31 2005] : <font color='#0000ff'>/update [get]</font> - Get the latest version of OpenRPG.<br>
+[Fri Mar 25 16:28:31 2005] : <font color='#0000ff'>/version</font> - Displays current version of OpenRPG.<br>
+[Fri Mar 25 16:28:31 2005] : <font color='#0000ff'>/w player_id_number, ... = message</font> - Whisper to player(s). Can contain multiple IDs.<br>
+[Fri Mar 25 16:32:34 2005] : <font color='#0000ff'>Locating server at 127.0.0.1:6774...</font><br>
+[Fri Mar 25 16:32:34 2005] : <font color='#0000ff'>Game connected!</font><br>
+[Fri Mar 25 16:32:35 2005] : <font color='#0000ff'>Renate (enter): 16:32</font><br>
+[Fri Mar 25 16:32:35 2005] : <B><I><U>Server Administrator</U>-></I></B> You have connected to an <a href="http://www.openrpg.com">OpenRPG</a> server, version '1.6.1', named 'Dragonhunt'.
+
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+  <body bgcolor="#FFFFFF">
+    <table cellspacing=3 cellpadding=4 width="100%">
+      <tr>
+       <td bgcolor="#101010" align="bottom">
+         <center><a href="http://www.openrpg.com"><img src="images/splash.gif" border="0"></a></center>
+       </td>
+      </tr>
+      <tr>
+        <td bgcolor="#73A183" align="center">
+         <table cellpadding="0" cellspacing="0" width="100%">
+           <tr>
+            <td align="center" width="100%">
+             Many thanks goes to all of those who contributed!
+             <BR>
+              The developers in alphabetical order are:
+             <BR>
+            Thomas Baleno, Andrew Bennett, Lex Berezhny, Ted Berg,
+            Bernhard Bergbauer, Chris Blocher ,Ben Collins-Sussman, Robin Cook, Greg Copeland,
+            Chris Davis, Michael Edwards, Andrew Ettinger, Dj Gilcrease, Todd Faris, 
+            Christopher Hickman, Paul Hosking, Scott Mackay, Brian Manning, 
+            Jesse McConnell, Brian Osman, Rome Reginelli, Christopher Rouse, Dave Sanders and Mark Tarrabain.
+            </td>
+              </tr>
+                <tr>
+                <td align="center" width="100%">
+                This product is licensed under the <a href="http://www.gnu.org">GNU</a> <a href="http://www.gnu.org/philosophy/license-list.html">GPL License.</a>
+             </td>
+             </tr>
+            </table>
+           </td>
+      </tr>
+    </table>
+
+<!-- Created: Thursday November 9 23:55:12 PDT 2003 -->
+  </body>
+</html>
+
+<br>
+[Fri Mar 25 16:33:18 2005] : <font color='#0000ff'>Moving to room 'Campaign'..</font><br>
+[Fri Mar 25 16:33:18 2005] : <font color='#0000ff'>Renate (enter): 16:33</font><br>
+[Fri Mar 25 16:33:18 2005] : <B><I><U>Server Administrator</U>-></I></B> <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+  <body bgcolor="#FFFFFF">
+    <table cellspacing=3 cellpadding=4 width="100%">
+      <tr>
+       <td bgcolor="#101010" align="bottom">
+         <center><a href="http://www.openrpg.com"><img src="images/splash.gif" border="0"></a></center>
+       </td>
+      </tr>
+      <tr>
+        <td bgcolor="#73A183" align="center">
+         <table cellpadding="0" cellspacing="0" width="100%">
+           <tr>
+            <td align="center" width="100%">
+             Many thanks goes to all of those who contributed!
+             <BR>
+              The developers in alphabetical order are:
+             <BR>
+            Thomas Baleno, Andrew Bennett, Lex Berezhny, Ted Berg,
+            Bernhard Bergbauer, Chris Blocher ,Ben Collins-Sussman, Robin Cook, Greg Copeland,
+            Chris Davis, Michael Edwards, Andrew Ettinger, Dj Gilcrease, Todd Faris, 
+            Christopher Hickman, Paul Hosking, Scott Mackay, Brian Manning, 
+            Jesse McConnell, Brian Osman, Rome Reginelli, Christopher Rouse, Dave Sanders and Mark Tarrabain.
+            </td>
+              </tr>
+                <tr>
+                <td align="center" width="100%">
+                This product is licensed under the <a href="http://www.gnu.org">GNU</a> <a href="http://www.gnu.org/philosophy/license-list.html">GPL License.</a>
+             </td>
+             </tr>
+            </table>
+           </td>
+      </tr>
+    </table>
+
+<!-- Created: Thursday November 9 23:55:12 PDT 2003 -->
+  </body>
+</html>
+
+<br>
+[Fri Mar 25 16:33:25 2005] : <font color='#0000ff'>Moving to room 'Campaign'..</font><br>
+[Fri Mar 25 16:33:25 2005] : <font color='#0000ff'>Renate (enter): 16:33</font><br>
+[Fri Mar 25 16:33:25 2005] : <B><I><U>Server Administrator</U>-></I></B> <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+  <body bgcolor="#FFFFFF">
+    <table cellspacing=3 cellpadding=4 width="100%">
+      <tr>
+       <td bgcolor="#101010" align="bottom">
+         <center><a href="http://www.openrpg.com"><img src="images/splash.gif" border="0"></a></center>
+       </td>
+      </tr>
+      <tr>
+        <td bgcolor="#73A183" align="center">
+         <table cellpadding="0" cellspacing="0" width="100%">
+           <tr>
+            <td align="center" width="100%">
+             Many thanks goes to all of those who contributed!
+             <BR>
+              The developers in alphabetical order are:
+             <BR>
+            Thomas Baleno, Andrew Bennett, Lex Berezhny, Ted Berg,
+            Bernhard Bergbauer, Chris Blocher ,Ben Collins-Sussman, Robin Cook, Greg Copeland,
+            Chris Davis, Michael Edwards, Andrew Ettinger, Dj Gilcrease, Todd Faris, 
+            Christopher Hickman, Paul Hosking, Scott Mackay, Brian Manning, 
+            Jesse McConnell, Brian Osman, Rome Reginelli, Christopher Rouse, Dave Sanders and Mark Tarrabain.
+            </td>
+              </tr>
+                <tr>
+                <td align="center" width="100%">
+                This product is licensed under the <a href="http://www.gnu.org">GNU</a> <a href="http://www.gnu.org/philosophy/license-list.html">GPL License.</a>
+             </td>
+             </tr>
+            </table>
+           </td>
+      </tr>
+    </table>
+
+<!-- Created: Thursday November 9 23:55:12 PDT 2003 -->
+  </body>
+</html>
+
+<br>
+[Fri Mar 25 16:33:55 2005] : <font color='#0000ff'>Attempting to assign the role of PLAYER to (1) Renate...</font><br>
+[Fri Mar 25 17:22:49 2005] : <font color='#0000ff'>Rien (enter): 17:22</font><br>
+[Fri Mar 25 17:23:04 2005] : <font color='#008000'>** Rien runs in and waves like mad **</font><br>
+[Fri Mar 25 17:23:12 2005] : <B>Renate</B>: <font color='#000080'>well, we seem to have functioning server</font><br>
+[Fri Mar 25 17:23:14 2005] : <B>Renate</B>: <font color='#000080'>go us!</font><br>
+[Fri Mar 25 17:23:21 2005] : <font color='#0000ff'>Attempting to assign the role of PLAYER to (2) Rien...</font><br>
+[Fri Mar 25 17:23:54 2005] : <B>Rien</B>: <font color='#004040'>go you, you mean</font><br>
+[Fri Mar 25 17:23:56 2005] : <B>Rien</B>: <font color='#004040'>you did it</font><br>
+[Fri Mar 25 17:23:58 2005] : <B>Rien</B>: <font color='#004040'>not iI</font><br>
+[Fri Mar 25 17:24:17 2005] : <B>Renate</B>: <font color='#000080'>eh, well, minor matter of reading some documentation and then not being stupid...</font><br>
+[Fri Mar 25 17:24:32 2005] : <B>Renate</B>: <font color='#000080'>actually, I was stupid a couple-three times and then had to fix it. :)</font><br>
+[Fri Mar 25 17:29:01 2005] : <font color='#008000'>** Rien tries ot find the setting to use to turn off this damn auto-complete crap **</font><br>
+[Fri Mar 25 17:31:50 2005] : <B>Renate</B>: <font color='#000080'>Settings, Chat, SuppressChatAutoComplete</font><br>
+[Fri Mar 25 17:32:02 2005] : <B>Renate</B>: <font color='#000080'>set to 1</font><br>
+[Fri Mar 25 17:33:49 2005] : <B>Rien</B>: <font color='#004040'>gooody!</font><br>
+[Fri Mar 25 18:22:20 2005] : <font color='#0000ff'>Rien (exit): 18:22</font><br>
+[Fri Mar 25 18:23:54 2005] : <font color='#0000ff'>Rien (enter): 18:23</font><br>
+[Fri Mar 25 18:25:21 2005] : <B>Rien</B>: <font color='#004040'>right</font><br>
+[Fri Mar 25 18:25:25 2005] : <B>Rien</B>: <font color='#004040'>so am I back this time?</font><br>
+[Fri Mar 25 18:27:10 2005] : <font color='#0000ff'>No Name (enter): 18:27</font><br>
+[Fri Mar 25 18:27:20 2005] : <B>No Name</B>: <font color='#000080'>Well, that wasn't hard.</font><br>
+[Fri Mar 25 18:27:24 2005] : <B>Alan</B>: <font color='#000080'>There.</font><br>
+[Fri Mar 25 18:27:43 2005] : <B>Alan</B>: <font color='#000080'>Just took a few minutes to download the programs.</font><br>
+[Fri Mar 25 18:27:46 2005] : <B>Alan</B>: <font color='#000080'>And yay, I'm not the latest!</font><br>
+[Fri Mar 25 18:28:38 2005] : <B>Alan</B>: <font color='#000080'>Hm. I haven't done this in a while... does reconfiguring my layout still require XML hacking?</font><br>
+[Fri Mar 25 18:28:56 2005] : <B>Alan</B>: <font color='#000080'>It's not important, as it's really only the chat window we're worried about tonight.</font><br>
+[Fri Mar 25 18:29:48 2005] : <B>Rien</B>: <font color='#004040'>indeed</font><br>
+[Fri Mar 25 18:30:48 2005] : <B>Renate</B>: <font color='#000080'>Alan, do you have Matt's folks' phone number?</font><br>
+[Fri Mar 25 18:30:55 2005] : <font color='#0000ff'>Attempting to assign the role of PLAYER to (4) Rien...</font><br>
+[Fri Mar 25 18:31:00 2005] : <font color='#0000ff'>Attempting to assign the role of GM to (5) Alan...</font><br>
+[Fri Mar 25 18:31:11 2005] : <B>Renate</B>: <font color='#000080'>I can try to give him a buzz.</font><br>
+[Fri Mar 25 18:32:14 2005] : <B>Renate</B>: <font color='#000080'>I'm worried he thinks we're playing tomorrow or something.</font><br>
+[Fri Mar 25 18:33:43 2005] : <B>Alan</B>: <font color='#000080'>Er. If I did have it, it would be back on my own computer.</font><br>
+[Fri Mar 25 18:33:56 2005] : <B>Alan</B>: <font color='#000080'>And I can't call Dave to check, because he's in Chicago with some of our college friends right now.</font><br>
+[Fri Mar 25 18:34:04 2005] : <B>Alan</B>: <font color='#000080'>We're meeting at the Neo-Futurarium.</font><br>
+[Fri Mar 25 18:34:53 2005] : <B>Alan</B>: <font color='#000080'>We have been on Saturday long enough for a misunderstanding to be possible.</font><br>
+[Fri Mar 25 18:34:57 2005] : <B>Renate</B>: <font color='#000080'>Yep.</font><br>
+[Fri Mar 25 18:35:09 2005] : <B>Renate</B>: <font color='#000080'>So question becomes, can we reconvene tomorrow if necessary?</font><br>
+[Fri Mar 25 18:35:11 2005] : <B>Renate</B>: <font color='#000080'>I can.</font><br>
+[Fri Mar 25 18:36:08 2005] : <B>Alan</B>: <font color='#000080'>Hm. I sort of can. Yeah. I can.</font><br>
+[Fri Mar 25 18:36:14 2005] : <B>Alan</B>: <font color='#000080'>2pm CST is doable.</font><br>
+[Fri Mar 25 18:36:19 2005] : <B>Alan</B>: <font color='#000080'>I'd just have to wake up. :)</font><br>
+[Fri Mar 25 18:36:30 2005] : <B>Renate</B>: <font color='#000080'>Well, where will you be? I do have a telephone. :)</font><br>
+[Fri Mar 25 18:36:34 2005] : <B>Alan</B>: <font color='#000080'>Hey, I noticed a flurry of activity on my log now, but without my old watchlist cookies, I don't know where or how much.</font><br>
+[Fri Mar 25 18:36:49 2005] : <B>Alan</B>: <font color='#000080'>Any developments that I should be immediately aware of? Mom said something about a Madison trip being planned.</font><br>
+[Fri Mar 25 18:36:53 2005] : <B>Rien</B>: <font color='#004040'>well... it's kinda Easter Sunday tomorrow, but I can do the 7AM call if y'all need me to</font><br>
+[Fri Mar 25 18:36:53 2005] : <B>Renate</B>: <font color='#000080'>The tree joke post. People are coming up to my place on Tuesday.</font><br>
+[Fri Mar 25 18:36:57 2005] : <B>Alan</B>: <font color='#000080'>I'll be back to Milwaukee by Saturday.</font><br>
+[Fri Mar 25 18:37:01 2005] : <B>Alan</B>: <font color='#000080'>Hey, excellent.</font><br>
+[Fri Mar 25 18:37:12 2005] : <B>Alan</B>: <font color='#000080'>I'll be there too, of course.</font><br>
+[Fri Mar 25 18:37:15 2005] : <B>Renate</B>: <font color='#000080'>:)</font><br>
+[Fri Mar 25 18:37:31 2005] : <B>Alan</B>: <font color='#000080'>Anything else would be uncivilized.</font><br>
+[Fri Mar 25 18:39:51 2005] : <B>Renate</B>: <font color='#000080'>OTOH, he might just have forgotten he's flipped timezones. :)</font><br>
+[Fri Mar 25 18:40:05 2005] : <B>Alan</B>: <font color='#000080'>This too is possible.</font><br>
+[Fri Mar 25 18:40:11 2005] : <B>Alan</B>: <font color='#000080'>I'll be lurking here as long as you want, anyway.</font><br>
+[Fri Mar 25 18:40:16 2005] : <B>Alan</B>: <font color='#000080'>Nothing else to do while laundry cycles.</font><br>
+[Fri Mar 25 18:40:28 2005] : <B>Renate</B>: <font color='#000080'>Okay. We can hang until 7:15 or so, and if he hasn't shown by then, he probably isn't gonna.</font><br>
+[Fri Mar 25 18:43:16 2005] : <B>Alan</B>: <font color='#000080'>I was thinking on the drive over here about books versus computers, spurred in equal part by your Michael Gorman rants and a Giles line from Buffy about how "getting knowledge should be ... smelly."</font><br>
+[Fri Mar 25 18:43:37 2005] : <B>Alan</B>: <font color='#000080'>And I think a lot of the arguers are failing to define the problem.</font><br>
+[Fri Mar 25 18:43:45 2005] : <B>Renate</B>: <font color='#000080'>How so?</font><br>
+[Fri Mar 25 18:43:51 2005] : <B>Alan</B>: <font color='#000080'>Is it a question of each mediums utility in the conveyance of knowledge/information?</font><br>
+[Fri Mar 25 18:44:04 2005] : <B>Alan</B>: <font color='#000080'>Or is an aesthetic element being introduced to the dispute?</font><br>
+[Fri Mar 25 18:44:26 2005] : <B>Alan</B>: <font color='#000080'>The balance of power flops wildly depending on which axes you're aligned on/grinding.</font><br>
+[Fri Mar 25 18:44:46 2005] : <B>Renate</B>: <font color='#000080'>Absolutely.</font><br>
+[Fri Mar 25 18:44:59 2005] : <B>Renate</B>: <font color='#000080'>And if they decide to rest on the aesthetic principles, they're going to LOSE, and LOSE BADLY.</font><br>
+[Fri Mar 25 18:45:06 2005] : <B>Alan</B>: <font color='#000080'>Also, I argue that if a "text" is so "difficult" it requires "sustained reading"... get a new author.</font><br>
+[Fri Mar 25 18:45:08 2005] : <B>Renate</B>: <font color='#000080'>We've been through that one before: the transition from manuscript to print.</font><br>
+[Fri Mar 25 18:45:58 2005] : <B>Alan</B>: <font color='#000080'>There's a limit to how low your common denominator can get while still allowing the transmission of complex ideas, but I submit that academic writers SO haven't got there yet.</font><br>
+[Fri Mar 25 18:46:19 2005] : <B>Alan</B>: <font color='#000080'>(insert weary Ivory Tower metaphor)</font><br>
+[Fri Mar 25 18:47:07 2005] : <B>Renate</B>: <font color='#000080'>heh</font><br>
+[Fri Mar 25 18:51:32 2005] : <B>Alan</B>: <font color='#000080'>Heh. "I have no class at the best of times" reminds me of a classic D&D line which I can cheerfully attribute to one of my friends, although I'm sure it's been independently discovered a thousand times over...</font><br>
+[Fri Mar 25 18:51:39 2005] : <B>Alan</B>: <font color='#000080'>"You have no character and no class."</font><br>
+[Fri Mar 25 18:51:51 2005] : <B>Renate</B>: <font color='#000080'>You, my good man, need to play some Munchkin. :)</font><br>
+[Fri Mar 25 18:51:59 2005] : <B>Renate</B>: <font color='#000080'>Perhaps we can rectify that sad situation on Tuesday.</font><br>
+[Fri Mar 25 18:52:11 2005] : <B>Alan</B>: <font color='#000080'>You know, I think we've had this exact exchange at least once.</font><br>
+[Fri Mar 25 18:52:58 2005] : <B>Renate</B>: <font color='#000080'>Could be. :)</font><br>
+[Fri Mar 25 18:53:06 2005] : <B>Renate</B>: <font color='#000080'>I'm remarkably predictable sometimes.</font><br>
+[Fri Mar 25 18:53:30 2005] : <font color='#008000'>** Rien finds himself lost in the woods, pretending to understand, his mind elsewhere on the domain account he's trying to administer **</font><br>
+[Fri Mar 25 18:54:39 2005] : <B>Renate</B>: <font color='#000080'>Eh, well, Rien's the one who gets to think that Renate and Aryk have run off together to go live in sin in Valin.</font><br>
+[Fri Mar 25 18:54:46 2005] : <B>Renate</B>: <font color='#000080'>Or something along those lines.</font><br>
+[Fri Mar 25 18:55:20 2005] : <B>Alan</B>: <font color='#000080'>At least until he gets a friendly note from one of his contacts.</font><br>
+[Fri Mar 25 18:55:24 2005] : <B>Rien</B>: <font color='#004040'>eh, he's not about to think that</font><br>
+[Fri Mar 25 18:55:26 2005] : <B>Rien</B>: <font color='#004040'>Coris might</font><br>
+[Fri Mar 25 18:55:31 2005] : <B>Rien</B>: <font color='#004040'>but Rien knows better</font><br>
+[Fri Mar 25 18:55:46 2005] : <B>Rien</B>: <font color='#004040'>particularly since he wouldn't exactly consider it 'sin'</font><br>
+[Fri Mar 25 18:56:05 2005] : <B>Renate</B>: <font color='#000080'>"Hey, so when did Renate and Aryk decide to vacation in the Demon World?"</font><br>
+[Fri Mar 25 18:56:18 2005] : <B>Alan</B>: <font color='#000080'>Coris is one of those guys who compensates for a lack of jealousy with a certain merciless self-cauterization in the event of infidelity.</font><br>
+[Fri Mar 25 18:56:41 2005] : <B>Renate</B>: <font color='#000080'>Well, the question then becomes what his definition of infidelity is.</font><br>
+[Fri Mar 25 18:56:51 2005] : <B>Alan</B>: <font color='#000080'>"Well, I gave her plenty of rope. Let her swing."</font><br>
+[Fri Mar 25 18:56:52 2005] : <B>Renate</B>: <font color='#000080'>He might want to, I don't know, actually *share* that with Renate at some point.</font><br>
+[Fri Mar 25 18:57:11 2005] : <B>Alan</B>: <font color='#000080'>As you might guess, he's also the type who wouldn't think it's not self-evident.</font><br>
+[Fri Mar 25 18:57:30 2005] : <B>Renate</B>: <font color='#000080'>*eyeroll* Men.</font><br>
+[Fri Mar 25 18:57:54 2005] : <B>Alan</B>: <font color='#000080'>Yep. The strike zone is really narrow, there's a lot of room for balls and walks, but you only get one strike.</font><br>
+[Fri Mar 25 18:58:04 2005] : <B>Alan</B>: <font color='#000080'>Pre-emptively talking it over with him might be wise.</font><br>
+[Fri Mar 25 18:58:25 2005] : <B>Renate</B>: <font color='#000080'>Probably.</font><br>
+[Fri Mar 25 18:58:54 2005] : <B>Renate</B>: <font color='#000080'>As you might have guessed from last session, it's on Renate's mind too.</font><br>
+[Fri Mar 25 18:59:45 2005] : <font color='#0000ff'>Aryk (enter): 18:59</font><br>
+[Fri Mar 25 18:59:57 2005] : <B>Aryk</B>: <font color='#000080'>Hey hey hey</font><br>
+[Fri Mar 25 19:00:03 2005] : <B>Renate</B>: <font color='#000080'>heya!</font><br>
+[Fri Mar 25 19:00:13 2005] : <font color='#0000ff'>Attempting to assign the role of PLAYER to (7) Aryk...</font><br>
+[Fri Mar 25 19:00:15 2005] : <B>Alan</B>: <font color='#000080'>Hey, just when I was about to go AFK to check laundry.</font><br>
+[Fri Mar 25 19:00:17 2005] : <B>Alan</B>: <font color='#000080'>BRB.</font><br>
+[Fri Mar 25 19:00:24 2005] : <B>Aryk</B>: <font color='#000080'>Wow it's seven and the room's all ready to go!  </font><br>
+[Fri Mar 25 19:00:35 2005] : <B>Renate</B>: <font color='#000080'>because we start at six, dude! do you remember what timezone you're in now?</font><br>
+[Fri Mar 25 19:00:53 2005] : <B>Renate</B>: <font color='#000080'>bit of news, before Alan gets back, though</font><br>
+[Fri Mar 25 19:00:59 2005] : <B>Renate</B>: <font color='#000080'>there's a party at my house on Tuesday</font><br>
+[Fri Mar 25 19:01:03 2005] : <B>Aryk</B>: <font color='#000080'>....Oh, crap</font><br>
+[Fri Mar 25 19:01:07 2005] : <B>Aryk</B>: <font color='#000080'>Oh?</font><br>
+[Fri Mar 25 19:01:08 2005] : <B>Renate</B>: <font color='#000080'>Alan's coming, Justin's coming, Valori's coming, you're invited</font><br>
+[Fri Mar 25 19:01:20 2005] : <B>Renate</B>: <font color='#000080'>grab a ride with Valori or Alan</font><br>
+[Fri Mar 25 19:01:29 2005] : <B>Renate</B>: <font color='#000080'>check Alan's site (the silly tree-pun post) for details</font><br>
+[Fri Mar 25 19:01:37 2005] : <B>Aryk</B>: <font color='#000080'>Really?  Hmmm... yes, I just might.  I'll probably go with Alan.  Er... who's Valori?</font><br>
+[Fri Mar 25 19:01:45 2005] : <B>Renate</B>: <font color='#000080'>'Nother of Alan's friends.</font><br>
+[Fri Mar 25 19:01:45 2005] : <B>Rien</B>: <font color='#004040'>awwww dammit!</font><br>
+[Fri Mar 25 19:01:48 2005] : <B>Rien</B>: <font color='#004040'>I wanna be there!</font><br>
+[Fri Mar 25 19:02:32 2005] : <B>Aryk</B>: <font color='#000080'>Sorry dude.  Crap, guys, I totally am not on Illinois time yet, apparantly.  Here I am thinking I was all punctual.  </font><br>
+[Fri Mar 25 19:02:39 2005] : <B>Renate</B>: <font color='#000080'>no worries :)</font><br>
+[Fri Mar 25 19:02:50 2005] : <B>Aryk</B>: <font color='#000080'>Have you all done anything?</font><br>
+[Fri Mar 25 19:02:53 2005] : <B>Renate</B>: <font color='#000080'>nope</font><br>
+[Fri Mar 25 19:03:02 2005] : <B>Aryk</B>: <font color='#000080'>Awww... I'm a dumb@$$</font><br>
+[Fri Mar 25 19:03:04 2005] : <B>Renate</B>: <font color='#000080'>chatted briefly about how to keep Coris from dumping Renate</font><br>
+[Fri Mar 25 19:03:16 2005] : <B>Aryk</B>: <font color='#000080'>heh</font><br>
+[Fri Mar 25 19:03:59 2005] : <B>Aryk</B>: <font color='#000080'>Are you worried that might happen?</font><br>
+[Fri Mar 25 19:04:10 2005] : <B>Rien</B>: <font color='#004040'>very yes</font><br>
+[Fri Mar 25 19:04:12 2005] : <B>Renate</B>: <font color='#000080'>oh, you know me, eternal pessimist; I suspect it's inevitable</font><br>
+[Fri Mar 25 19:04:30 2005] : <B>Aryk</B>: <font color='#000080'>I don't know, maybe.  Maybe not.</font><br>
+[Fri Mar 25 19:04:46 2005] : <B>Rien</B>: <font color='#004040'>especially since Coris can't seem to get his head around what it is to be polyamourous</font><br>
+[Fri Mar 25 19:05:02 2005] : <B>Aryk</B>: <font color='#000080'>Well that's true</font><br>
+[Fri Mar 25 19:05:15 2005] : <B>Rien</B>: <font color='#004040'>lovely, lovely</font><br>
+[Fri Mar 25 19:05:15 2005] : <B>Renate</B>: <font color='#000080'>well, as I said, it depends on what his definition of fidelity turns out to be</font><br>
+[Fri Mar 25 19:05:27 2005] : <B>Aryk</B>: <font color='#000080'>brb bathroom break  Yeah</font><br>
+[Fri Mar 25 19:05:30 2005] : <B>Renate</B>: <font color='#000080'>it's possible they can work something out</font><br>
+[Fri Mar 25 19:05:36 2005] : <B>Rien</B>: <font color='#004040'>when your friend asks you to upload an 'under contruction' placeholder page to the group's new website for him...</font><br>
+[Fri Mar 25 19:05:46 2005] : <B>Renate</B>: <font color='#000080'>you say "NO! NO! A MILLION TIMES NO!"</font><br>
+[Fri Mar 25 19:06:09 2005] : <B>Rien</B>: <font color='#004040'>and he tells you 'no, the passwords the same as the one I told you last night when I signed up for the account'</font><br>
+[Fri Mar 25 19:06:17 2005] : <B>Rien</B>: <font color='#004040'>and you try oggin into FTP</font><br>
+[Fri Mar 25 19:06:20 2005] : <B>Renate</B>: <font color='#000080'>uh-oh</font><br>
+[Fri Mar 25 19:06:23 2005] : <B>Renate</B>: <font color='#000080'>did somebody get hacked?</font><br>
+[Fri Mar 25 19:06:28 2005] : <B>Rien</B>: <font color='#004040'>to find the password's not being accepted</font><br>
+[Fri Mar 25 19:06:39 2005] : <B>Rien</B>: <font color='#004040'>so you log into the web-panel, and that's ok</font><br>
+[Fri Mar 25 19:06:49 2005] : <B>Rien</B>: <font color='#004040'>you try changing the password to check on it</font><br>
+[Fri Mar 25 19:07:01 2005] : <B>Rien</B>: <font color='#004040'>and your told that the password you were given is not the password for the account</font><br>
+[Fri Mar 25 19:07:13 2005] : <B>Rien</B>: <font color='#004040'>and *he's already left his house for some event or another*</font><br>
+[Fri Mar 25 19:08:05 2005] : <B>Renate</B>: <font color='#000080'>you shrug your shoulders and walk away from it for a bit</font><br>
+[Fri Mar 25 19:08:17 2005] : <B>Renate</B>: <font color='#000080'>there being not much else you can do</font><br>
+[Fri Mar 25 19:09:07 2005] : <B>Renate</B>: <font color='#000080'>Tell you what, Matt, let's get started -- Renate and Aryk can be scared together while we wait for Alan. :)</font><br>
+[Fri Mar 25 19:09:10 2005] : <B>Aryk</B>: <font color='#000080'>Ruh-roh</font><br>
+[Fri Mar 25 19:09:20 2005] : <B>Aryk</B>: <font color='#000080'>Sure thing.</font><br>
+[Fri Mar 25 19:09:26 2005] : <B>Alan</B>: <font color='#000080'>Okay, back.</font><br>
+[Fri Mar 25 19:09:29 2005] : <B>Renate</B>: <font color='#000080'>Log is on.</font><br>
+[Fri Mar 25 19:09:30 2005] : <B>Alan</B>: <font color='#000080'>Just tossed some things in the dryer.</font><br>
+[Fri Mar 25 19:09:39 2005] : <B>Aryk</B>: <font color='#000080'>(Heh heh)</font><br>
+[Fri Mar 25 19:09:46 2005] : <B>Renate</B>: <font color='#000080'>(I'll edit.)</font><br>
+[Fri Mar 25 19:09:50 2005] : <B>Alan</B>: <font color='#000080'>(Yes, it'll be up to Dorothea to log this one.)</font><br>
+[Fri Mar 25 19:10:14 2005] : <B>Renate</B>: <font color='#000080'>"Well, that's a terrible exit line," Renate says, reaching for Aryk's hand.</font><br>
+[Fri Mar 25 19:10:29 2005] : <B>Renate</B>: <font color='#000080'>"Are you all right?"</font><br>
+[Fri Mar 25 19:10:35 2005] : <font color='#008000'>** Aryk is quiet while he takes Renate's hand **</font><br>
+[Fri Mar 25 19:10:57 2005] : <B>Aryk</B>: <font color='#000080'>"I'm scared.  But I'm... I have to go through this."</font><br>
+[Fri Mar 25 19:11:41 2005] : <B>Renate</B>: <font color='#000080'>"Nothing wrong with being scared. It's what you do in spite of that. Look, Aryk... I actually think it's pretty simple. You want good for the world. Hold on to that, you'll be all right."</font><br>
+[Fri Mar 25 19:11:43 2005] : <B>Alan</B>: <font color='#000080'>The gray-white marble halls of Red Palace stretch to infinity, red paper screens alternating with simple smooth pillars.</font><br>
+[Fri Mar 25 19:12:19 2005] : <font color='#008000'>** Aryk turns to face Renate curiously.  He smiles a bit, then. **</font><br>
+[Fri Mar 25 19:12:24 2005] : <B>Aryk</B>: <font color='#000080'>"You're right."</font><br>
+[Fri Mar 25 19:12:24 2005] : <B>Alan</B>: <font color='#000080'>The capitals of the pillars are gargoyles, in a minor concession to demonology; but the tone of the desmesnes is formal and reserved.</font><br>
+[Fri Mar 25 19:12:53 2005] : <B>Renate</B>: <font color='#000080'>"And about truth -- nobody tells the whole truth. Nobody can. It's too big. So what the saint said -- it's true, in a way, but it's also true that some things the Church has told you are true."</font><br>
+[Fri Mar 25 19:13:26 2005] : <B>Aryk</B>: <font color='#000080'>"Yes.  It can't all be a lie.  I mean... it can't... can it?"</font><br>
+[Fri Mar 25 19:13:33 2005] : <B>Renate</B>: <font color='#000080'>"And whatever truth you learn here, though it's liable to be incomplete, can only help you in the long run."</font><br>
+[Fri Mar 25 19:13:43 2005] : <B>Renate</B>: <font color='#000080'>"No, Aryk, no, I don't think so."</font><br>
+[Fri Mar 25 19:13:56 2005] : <B>Renate</B>: <font color='#000080'>"For one thing, what the saint told you was paradoxical, since he's a member of the Church himself."</font><br>
+[Fri Mar 25 19:14:26 2005] : <B>Aryk</B>: <font color='#000080'>"Heh... " Aryk chuckles nervously, "I hope you're right"</font><br>
+[Fri Mar 25 19:14:52 2005] : <B>Renate</B>: <font color='#000080'>"So do I. So do I. Now, objectives: stay alive, stay together, and get through this. You with me on that?"</font><br>
+[Fri Mar 25 19:14:56 2005] : <i><B>Rien</B> (whispering): <font color='#004040'>Ha, I was thinknig exactly the same thing last night.  Then I figured that it's true in a certain light</font></i><br>
+[Fri Mar 25 19:15:28 2005] : <i><B>Rien</B> (whispering): <font color='#004040'>"Everything the church *has* taught you is false", has, past tense, everything before now is false.  so it's true</font></i><br>
+[Fri Mar 25 19:15:38 2005] : <font color='#0000ff'><i>whispering to Rien,  :P</i> </font><br>
+[Fri Mar 25 19:15:50 2005] : <B>Alan</B>: <font color='#000080'>There's no way to get a sense of direction here; this high-ceilinged hall stretches out of sight to an arbitrary "north" and "south."</font><br>
+[Fri Mar 25 19:16:17 2005] : <B>Aryk</B>: <font color='#000080'>Aryk figures forward is the way to go.  "Yes."  Aryk stops again and faces Renate.  "Thank you, Rennie.  Whatever... whatever we said to each other earlier... let's just forget it.  I mean... I forgive you."</font><br>
+[Fri Mar 25 19:16:34 2005] : <B>Alan</B>: <font color='#000080'>The red paper screens are painted in subtle tones of earth and sepia with scenes of heroes, demons, and angels, of the First Age.</font><br>
+[Fri Mar 25 19:16:55 2005] : <B>Renate</B>: <font color='#000080'>The gratitude on her face is almost palpable. "Oh. Thank you."</font><br>
+[Fri Mar 25 19:17:06 2005] : <B>Renate</B>: <font color='#000080'>She squeezes his hand. "You lead, paladin."</font><br>
+[Fri Mar 25 19:17:41 2005] : <B>Aryk</B>: <font color='#000080'>Aryk smiles warmly.  He looks up as he leads onward, examining the scenes on the paper screens warily.</font><br>
+[Fri Mar 25 19:17:49 2005] : <B>Alan</B>: <font color='#000080'>There are intersections every hundred meters or so, leading to small hallways; though Red Palace may or may not be infinite in extent, it is varied in content.</font><br>
+[Fri Mar 25 19:18:08 2005] : <B>Alan</B>: <font color='#000080'>One hallway leads to a corridor walled in fishtanks (or possibly windows onto a true ocean)...</font><br>
+[Fri Mar 25 19:18:15 2005] : <B>Alan</B>: <font color='#000080'>One hallway leads into a gallery of sculptures.</font><br>
+[Fri Mar 25 19:18:29 2005] : <i><B>Rien</B> (whispering): <font color='#004040'><font color='#004040'>Ooh-wee-oh -- wee OOOOoooh</font></font></i><br>
+[Fri Mar 25 19:18:36 2005] : <B>Alan</B>: <font color='#000080'>One leads to steps which open onto an empty arena, dark stains on sand speaking of past battles.</font><br>
+[Fri Mar 25 19:18:40 2005] : <font color='#008000'>** Renate is content to follow Aryk's lead. **</font><br>
+[Fri Mar 25 19:18:45 2005] : <font color='#0000ff'><i>whispering to Rien,  totally</i> </font><br>
+[Fri Mar 25 19:18:56 2005] : <font color='#008000'>** Aryk only pauses a moment here and there to peek into the rooms from afar, but ultimately he continues forward **</font><br>
+[Fri Mar 25 19:19:34 2005] : <B>Renate</B>: <font color='#000080'>"You must miss Ricard," Renate observes quietly.</font><br>
+[Fri Mar 25 19:19:36 2005] : <B>Aryk</B>: <font color='#000080'>"Sort of like... a lobby to big fancy inn... or a museum... only... well... not like that at all, I guess."</font><br>
+[Fri Mar 25 19:19:49 2005] : <B>Renate</B>: <font color='#000080'>"A king's hall."</font><br>
+[Fri Mar 25 19:19:51 2005] : <B>Alan</B>: <font color='#000080'>There is only one directional cue here: a very occasional and almost instantaneous hissing noise, like a whip about to crack.</font><br>
+[Fri Mar 25 19:20:01 2005] : <font color='#008000'>** Aryk simply nods.  There's some concern in his eyes. **</font><br>
+[Fri Mar 25 19:20:06 2005] : <B>Aryk</B>: <font color='#000080'>"Do you hear that?"</font><br>
+[Fri Mar 25 19:20:13 2005] : <B>Alan</B>: <font color='#000080'>It comes from far to the south, so far down the hall that vision grays out without a horizon to cut it off.</font><br>
+[Fri Mar 25 19:20:20 2005] : <B>Renate</B>: <font color='#000080'>"Yes. It's not close enough to duck; that's about all I can say. That direction."</font><br>
+[Fri Mar 25 19:20:34 2005] : <B>Renate</B>: <font color='#000080'>"Best lead we've got so far, I think."</font><br>
+[Fri Mar 25 19:20:57 2005] : <font color='#008000'>** Aryk and Renate approach the source of the noise carefully **</font><br>
+[Fri Mar 25 19:21:01 2005] : <B>Alan</B>: <font color='#000080'>Galleries off the main hall continue to display strange sights: a theater in which brass automata dance a slow and graceful ballet.</font><br>
+[Fri Mar 25 19:21:39 2005] : <B>Alan</B>: <font color='#000080'>A dim, almost claustrophobic room full of man-high boxes with glowing windows and odd knobs on control panels.</font><br>
+[Fri Mar 25 19:21:47 2005] : <B>Renate</B>: <font color='#000080'>Ordinarily Renate would stop to watch; now she is too keyed-up even to notice anything that isn't immediately pertinent -- or immediately lethal.</font><br>
+[Fri Mar 25 19:22:08 2005] : <B>Alan</B>: <font color='#000080'>An orrery writ in light, planets hovering in the air around the sun.</font><br>
+[Fri Mar 25 19:22:38 2005] : <B>Renate</B>: <font color='#000080'>"I wish I could tell where the light was coming from."</font><br>
+[Fri Mar 25 19:22:45 2005] : <B>Alan</B>: <font color='#000080'>Time stands still here; though you walk a long time, you grow neither weary nor bored.</font><br>
+[Fri Mar 25 19:23:11 2005] : <B>Alan</B>: <font color='#000080'>The light is directionless, yet not inhuman; instead, all is lit as if by steady lamplight.</font><br>
+[Fri Mar 25 19:23:50 2005] : <B>Renate</B>: <font color='#000080'>"You know, Aryk, I've always envied you the strength of your faith."</font><br>
+[Fri Mar 25 19:24:05 2005] : <B>Alan</B>: <font color='#000080'>One gallery leads to a hall of windows onto what you suspect to be the true surface of the Demon World&#8212;a cracked black volcanic field, red light pulsing from crevasses and crystal pillars.</font><br>
+[Fri Mar 25 19:25:03 2005] : <B>Aryk</B>: <font color='#000080'>"I wish I knew what the hell... er... what in the name of Michael all of those wierd glowy boxes were.  Did you see that model of the planets?  You think it really looks like.... eh?  Oh... well, thank you.  I've... always admired your persistance.  Your sense of reason.  Your..."  Aryk's voice drops off as he peers into the last gallery.</font><br>
+[Fri Mar 25 19:25:37 2005] : <B>Alan</B>: <font color='#000080'>To the south, a throne room of sorts comes into view; at least, as you squint, you can make out a dais only a single step above the floor level, with a simple high-backed wooden chair, uncarved and unfinished, in its center.</font><br>
+[Fri Mar 25 19:25:40 2005] : <B>Alan</B>: <font color='#000080'>The chair is empty.</font><br>
+[Fri Mar 25 19:25:40 2005] : <B>Renate</B>: <font color='#000080'>Renate tugs him gently onward. "Walls of glass between us and... that. Come on."</font><br>
+[Fri Mar 25 19:25:46 2005] : <B>Aryk</B>: <font color='#000080'>"...That place..."</font><br>
+[Fri Mar 25 19:26:02 2005] : <B>Renate</B>: <font color='#000080'>"I know. It's all right."</font><br>
+[Fri Mar 25 19:26:04 2005] : <B>Alan</B>: <font color='#000080'>The whipping noise is close now; it comes from south and a bit to the left, from one of the galleries right before the throne room.</font><br>
+[Fri Mar 25 19:26:06 2005] : <B>Aryk</B>: <font color='#000080'>"...Yeah... let's move on."</font><br>
+[Fri Mar 25 19:26:25 2005] : <B>Renate</B>: <font color='#000080'>"Shhhh. Quietly."</font><br>
+[Fri Mar 25 19:26:34 2005] : <B>Renate</B>: <font color='#000080'>Unconsciously, Renate goes up on tiptoe.</font><br>
+[Fri Mar 25 19:27:03 2005] : <font color='#008000'>** Aryk adds more determination to his pace as he leads on toward the noise.  Once close, the instinct to creep also overtakes him. **</font><br>
+[Fri Mar 25 19:27:15 2005] : <B>Alan</B>: <font color='#000080'>This gallery is a training hall, like any dojo in Southtown. A padded canvas mat, woven grass floor-mats, racks of wooden weapons.</font><br>
+[Fri Mar 25 19:28:26 2005] : <B>Alan</B>: <font color='#000080'>A man stands at one end of the ring, facing you. He is dressed only in a white hakama; tousled black hair almost hides his eyes.</font><br>
+[Fri Mar 25 19:28:47 2005] : <B>Alan</B>: <font color='#000080'>His skin is dark red; his eyes are black; though he gazes in your general direction, he doesn't focus on you.</font><br>
+[Fri Mar 25 19:28:51 2005] : <i><B>Rien</B> (whispering): <font color='#004040'><font color='#004040'>ack... there was something I was supposed to be doing today... what was it...</font></font></i><br>
+[Fri Mar 25 19:29:07 2005] : <font color='#0000ff'><i>whispering to Rien,  Reinstalling MS Office.</i> </font><br>
+[Fri Mar 25 19:29:14 2005] : <i><B>Rien</B> (whispering): <font color='#004040'><font color='#004040'>that's it</font></font></i><br>
+[Fri Mar 25 19:29:14 2005] : <i><B>Rien</B> (whispering): <font color='#004040'><font color='#004040'>thanks</font></font></i><br>
+[Fri Mar 25 19:29:16 2005] : <B>Alan</B>: <font color='#000080'>A straw-bale target dummy, like those used for sword practice everywhere, drops from nowhere to land on the mat.</font><br>
+[Fri Mar 25 19:29:21 2005] : <i><B>Rien</B> (whispering): <font color='#004040'><font color='#004040'>"I gaze in your general direction!"</font></font></i><br>
+[Fri Mar 25 19:29:26 2005] : <font color='#0000ff'><i>whispering to Rien,  LOL</i> </font><br>
+[Fri Mar 25 19:29:29 2005] : <font color='#008000'>** Aryk stops in his tracks **</font><br>
+[Fri Mar 25 19:29:36 2005] : <B>Alan</B>: <font color='#000080'>It immediately begins to move around, so quickly your eye can barely follow it, like the shell in a charlatan's ruse.</font><br>
+[Fri Mar 25 19:29:38 2005] : <i><B>Rien</B> (whispering): <font color='#004040'><font color='#004040'>"Your mother was an imp and your father smelled of hell-roasted flesh"</font></font></i><br>
+[Fri Mar 25 19:30:04 2005] : <B>Renate</B>: <font color='#000080'>"It may not be what it appears," Renate cautions him softly.</font><br>
+[Fri Mar 25 19:30:04 2005] : <B>Alan</B>: <font color='#000080'>The whipping noise sounds again, and the red-skinned man seems to shrug slightly.</font><br>
+[Fri Mar 25 19:30:29 2005] : <B>Alan</B>: <font color='#000080'>As the bale falls apart into a flurry of slashed straw, you realize that he is in fact returning from an attack.</font><br>
+[Fri Mar 25 19:30:38 2005] : <font color='#008000'>** Aryk nods but nonetheless tries his best to follow the training dummy and the man with his eyes **</font><br>
+[Fri Mar 25 19:30:52 2005] : <B>Aryk</B>: <font color='#000080'>"..."</font><br>
+[Fri Mar 25 19:30:57 2005] : <B>Alan</B>: <font color='#000080'>"This," he says, "is considerably harder than it looks."</font><br>
+[Fri Mar 25 19:31:06 2005] : <B>Renate</B>: <font color='#000080'>"Not bad," Renate murmurs. "Faster than Rien, even."</font><br>
+[Fri Mar 25 19:31:21 2005] : <B>Renate</B>: <font color='#000080'>"I believe you, sir," she says aloud, politely.</font><br>
+[Fri Mar 25 19:31:30 2005] : <B>Alan</B>: <font color='#000080'>"You might think, 'oh, he makes the rules here, he can do anything.' You'd be right. But of course that's cheating."</font><br>
+[Fri Mar 25 19:31:49 2005] : <B>Aryk</B>: <font color='#000080'>"Hah.  I can top... that."</font><br>
+[Fri Mar 25 19:31:55 2005] : <B>Alan</B>: <font color='#000080'>"And who likes cheaters? Nobody. But who defines cheating? That's where the philosophizing begins."</font><br>
+[Fri Mar 25 19:32:07 2005] : <i><B>Rien</B> (whispering): <font color='#004040'><font color='#004040'>cheating it may be, but is he adverse to cheating?</font></font></i><br>
+[Fri Mar 25 19:32:09 2005] : <i><B>Rien</B> (whispering): <font color='#004040'><font color='#004040'>he's a demon</font></font></i><br>
+[Fri Mar 25 19:32:27 2005] : <B>Renate</B>: <font color='#000080'>"Twisting the rules is frequently the most effective way to cheat."</font><br>
+[Fri Mar 25 19:32:31 2005] : <B>Alan</B>: <font color='#000080'>"You don't detect me as a demon, by the way, because I make the rules here. And I'd just as soon we talk man to man."</font><br>
+[Fri Mar 25 19:32:41 2005] : <B>Alan</B>: <font color='#000080'>"Case in point," he adds, nodding at Renate.</font><br>
+[Fri Mar 25 19:32:51 2005] : <B>Renate</B>: <font color='#000080'>"Hmph."</font><br>
+[Fri Mar 25 19:33:11 2005] : <B>Aryk</B>: <font color='#000080'>"That's fine.  I'd rather not get into a fight in a pocket dimension of someone else's creation, anyway."</font><br>
+[Fri Mar 25 19:33:16 2005] : <B>Alan</B>: <font color='#000080'>"First things first. I'm Kahan. I know who you are, and pleasantries would be ironic at best anyway."</font><br>
+[Fri Mar 25 19:33:39 2005] : <font color='#008000'>** Renate raises one blonde eyebrow in an otherwise motionless face. **</font><br>
+[Fri Mar 25 19:33:45 2005] : <B>Aryk</B>: <font color='#000080'>".... eh..."</font><br>
+[Fri Mar 25 19:33:51 2005] : <B>Alan</B>: <font color='#000080'>"You're in the Demon World, in Red Palace. It's a 'realm' of the Demon World -- if you don't know how that works, I'll explain later -- but it's the real deal."</font><br>
+[Fri Mar 25 19:33:55 2005] : <font color='#008000'>** Aryk involuntarily takes a step back. **</font><br>
+[Fri Mar 25 19:34:18 2005] : <font color='#008000'>** Renate follows him, somehow managing to make the clumsy retreat look like a dance-step. **</font><br>
+[Fri Mar 25 19:34:28 2005] : <B>Alan</B>: <font color='#000080'>"You may have seen some of the windows out into the surface. Trust me, it's all a psychological vision."</font><br>
+[Fri Mar 25 19:34:39 2005] : <B>Alan</B>: <font color='#000080'>"Just like all the crystalline water and glowing parrots up in the Sacred Realm."</font><br>
+[Fri Mar 25 19:34:58 2005] : <B>Alan</B>: <font color='#000080'>"None of it's real, on either side. We just give the public what they want. Heh, not to be cynical."</font><br>
+[Fri Mar 25 19:35:10 2005] : <B>Renate</B>: <font color='#000080'>"What they want, or what you want them to want?"</font><br>
+[Fri Mar 25 19:35:16 2005] : <B>Alan</B>: <font color='#000080'>"Better to say that if outside this palace were a beautiful evergreen forest... would it make you feel any better about demons?"</font><br>
+[Fri Mar 25 19:35:18 2005] : <B>Alan</B>: <font color='#000080'>"Probably not."</font><br>
+[Fri Mar 25 19:35:26 2005] : <B>Aryk</B>: <font color='#000080'>"Just hold on!  How.... h-how do I know you speak the truth?  How do I know you are who you say you are?"</font><br>
+[Fri Mar 25 19:35:39 2005] : <B>Alan</B>: <font color='#000080'>"Do you actually doubt me, Sir Aryk?"</font><br>
+[Fri Mar 25 19:36:34 2005] : <B>Aryk</B>: <font color='#000080'>"In this place I'll doubt just about anything I see.  Besides, how do I know you aren't a fy-lo-softical psycho vision too?"</font><br>
+[Fri Mar 25 19:37:02 2005] : <B>Alan</B>: <font color='#000080'>"You don't." Kahan (if he really is) shrugs helplessly.</font><br>
+[Fri Mar 25 19:37:16 2005] : <B>Aryk</B>: <font color='#000080'>"...Ah.  Right you are, then."</font><br>
+[Fri Mar 25 19:37:41 2005] : <B>Alan</B>: <font color='#000080'>"Sometimes you just have to take someone's word. Who am I, Ghoster? I don't lie."</font><br>
+[Fri Mar 25 19:38:09 2005] : <B>Alan</B>: <font color='#000080'>"Someone who's pretending to me could lie all day. No way of telling the difference."</font><br>
+[Fri Mar 25 19:38:17 2005] : <B>Alan</B>: <font color='#000080'>"I could say 'ask me something only Kahan would know.'"</font><br>
+[Fri Mar 25 19:38:25 2005] : <B>Alan</B>: <font color='#000080'>Kahan grins.</font><br>
+[Fri Mar 25 19:38:39 2005] : <B>Alan</B>: <font color='#000080'>"But if only I knew it, how would you?"</font><br>
+[Fri Mar 25 19:38:54 2005] : <B>Aryk</B>: <font color='#000080'>Aryk thinks, then shakes his head.  "This is crap!  If you're Kahan, why are you speaking to me?"</font><br>
+[Fri Mar 25 19:39:10 2005] : <B>Aryk</B>: <font color='#000080'>"Why don't you just banish me to some fiery pit?!"</font><br>
+[Fri Mar 25 19:39:11 2005] : <B>Alan</B>: <font color='#000080'>"I admire your willingness to start with first principles, though. So why not postulate that I'm Kahan, and then I'll explain what you're doing here."</font><br>
+[Fri Mar 25 19:39:30 2005] : <font color='#008000'>** Renate opens her mouth, then closes it, having been about to make the same remark. **</font><br>
+[Fri Mar 25 19:39:47 2005] : <B>Renate</B>: <font color='#000080'>She catches Aryk's eye and nods fractionally.</font><br>
+[Fri Mar 25 19:40:25 2005] : <B>Aryk</B>: <font color='#000080'>"Fine.  So...'Kahan'... what's crackin'?"</font><br>
+[Fri Mar 25 19:40:37 2005] : <font color='#008000'>** Aryk folds his arms skeptically **</font><br>
+[Fri Mar 25 19:40:50 2005] : <B>Alan</B>: <font color='#000080'>"You're here because the Church once saw promise in you, but now thinks that promise is running out. They think you're an incorrigible loose cannon who can't follow orders, has no fixed morality, and cheerfully reinterprets events to keep himself on the side of good no matter what happens."</font><br>
+[Fri Mar 25 19:40:53 2005] : <font color='#008000'>** Renate slips her hand into his elbow. **</font><br>
+[Fri Mar 25 19:41:24 2005] : <B>Alan</B>: <font color='#000080'>"They send people to me because they hope I'll turn them to my side, thus giving them some opponents they can actually kill for a change."</font><br>
+[Fri Mar 25 19:41:58 2005] : <B>Alan</B>: <font color='#000080'>"I got wise to that centuries ago, though. I'm not convinced you're Kahanite material. For one thing, you can't rap."</font><br>
+[Fri Mar 25 19:42:27 2005] : <B>Aryk</B>: <font color='#000080'>"That's.... I.... Fuck you!"  Aryk balls up his fist.</font><br>
+[Fri Mar 25 19:42:38 2005] : <B>Alan</B>: <font color='#000080'>"For another, you're lousy with the comebacks."</font><br>
+[Fri Mar 25 19:42:50 2005] : <B>Renate</B>: <font color='#000080'>"Aryk," Renate says, calmly. "Language. And temper. Don't prove him right."</font><br>
+[Fri Mar 25 19:43:05 2005] : <B>Alan</B>: <font color='#000080'>"Finally, you let women boss you around."</font><br>
+[Fri Mar 25 19:43:11 2005] : <B>Alan</B>: <font color='#000080'>"Just kidding," Kahan says, laughing.</font><br>
+[Fri Mar 25 19:43:14 2005] : <B>Aryk</B>: <font color='#000080'>"Language, Rennie?  Did you forget where we are?"</font><br>
+[Fri Mar 25 19:43:32 2005] : <B>Alan</B>: <font color='#000080'>"This one's a damn sight better than you in every category except the rapping."</font><br>
+[Fri Mar 25 19:43:43 2005] : <B>Renate</B>: <font color='#000080'>"Mm. Terrible thing, that, indeed. And yes, I know where we are, Aryk. It's a place where they <em>want</em> you to lose control. Think about that."</font><br>
+[Fri Mar 25 19:44:26 2005] : <B>Alan</B>: <font color='#000080'>"We beings of Order are androgynous, did you know that? I just take on a male form and mannerisms because some time in the First Age, there got to be this stupid tradition about what men do and what women do."</font><br>
+[Fri Mar 25 19:44:41 2005] : <B>Alan</B>: <font color='#000080'>"Turned out, hitting things with big pointy rocks was a Man thing, so I ended up stuck this way."</font><br>
+[Fri Mar 25 19:45:07 2005] : <B>Renate</B>: <font color='#000080'>"How sad."</font><br>
+[Fri Mar 25 19:45:26 2005] : <B>Alan</B>: <font color='#000080'>"So look. I'm not here to make you mad. If anything, I want you think about some things."</font><br>
+[Fri Mar 25 19:45:49 2005] : <B>Alan</B>: <font color='#000080'>"First off, and you can give me a snap answer if you want, is the Church good and am I evil?"</font><br>
+[Fri Mar 25 19:46:01 2005] : <B>Alan</B>: <font color='#000080'>"Don't consider demons as a whole. That Yves bastard, for instance, now <i>he</i> is evil."</font><br>
+[Fri Mar 25 19:46:26 2005] : <font color='#008000'>** Renate clears her throat, but lets Aryk answer. **</font><br>
+[Fri Mar 25 19:46:44 2005] : <font color='#0000ff'><i>whispering to Aryk,  Kahan is Lawful Neutral, if it helps.</i> </font><br>
+[Fri Mar 25 19:47:11 2005] : <font color='#0000ff'><i>whispering to Aryk,  Whereas Michael is LG.</i> </font><br>
+[Fri Mar 25 19:47:20 2005] : <B>Aryk</B>: <font color='#000080'>" You're right about me.  I'm a loose cannon.  I do things now not because I the chuch deems them righteous, but because I think it's the right thing to do.  I've learned that good can do evil, and evil can do good.  I love Michael because Michael does right by me."   </font><br>
+[Fri Mar 25 19:47:46 2005] : <B>Alan</B>: <font color='#000080'>"Way to not answer me, professor. But I'll work with what I've got."</font><br>
+[Fri Mar 25 19:47:57 2005] : <B>Alan</B>: <font color='#000080'>"Sounds like you're saying that nobody's completely good or completely evil."</font><br>
+[Fri Mar 25 19:48:08 2005] : <B>Aryk</B>: <font color='#000080'>"...No human, anyway."</font><br>
+[Fri Mar 25 19:48:38 2005] : <B>Alan</B>: <font color='#000080'>"Okay. I'm not going to try to say that Michael's in any way evil, because he's not. He's my brother and I love him."</font><br>
+[Fri Mar 25 19:48:40 2005] : <B>Renate</B>: <font color='#000080'>"Your faith, Lord Kahan, as I understand things, is neutral with respect to good and evil, demanding only strict adherence to a code of some sort. The exact nature of the code is up to each individual."</font><br>
+[Fri Mar 25 19:48:49 2005] : <i><B>Rien</B> (whispering): <font color='#004040'><font color='#004040'>well, some demons aren't completely evil either...look at Sam!</font></font></i><br>
+[Fri Mar 25 19:48:49 2005] : <B>Renate</B>: <font color='#000080'>"I apologize if I have misspoken."</font><br>
+[Fri Mar 25 19:49:01 2005] : <B>Alan</B>: <font color='#000080'>"Well exactly! Thank you, Mistress Von Adler! You have spared me a speech."</font><br>
+[Fri Mar 25 19:49:11 2005] : <B>Renate</B>: <font color='#000080'>"Lady von Adler, if you please."</font><br>
+[Fri Mar 25 19:49:24 2005] : <B>Renate</B>: <font color='#000080'>"It is a small thing to you, but meaningful to me."</font><br>
+[Fri Mar 25 19:50:06 2005] : <B>Alan</B>: <font color='#000080'>"Ah, my fault. Usually the nobles who come to me are a bit more positioned, and a bit more on their knees... so I've got in the habit of 'my lord'ing people sarcastically. Remoivng the honorific was more of a compliment than anything."</font><br>
+[Fri Mar 25 19:50:15 2005] : <B>Alan</B>: <font color='#000080'>"Lady it is."</font><br>
+[Fri Mar 25 19:50:33 2005] : <B>Renate</B>: <font color='#000080'>She bows her head. "I thank you, Lord."</font><br>
+[Fri Mar 25 19:50:48 2005] : <B>Aryk</B>: <font color='#000080'>"hmph...I've learned that Raphael still grants his gift of healing to those who would abuse it for financial purposes, or whatever.  I suppose it's possible that a Kahanite might do good things with the gifts 'you' award them as well.  I'm willing to accept that.  Does that answer your question?"</font><br>
+[Fri Mar 25 19:51:02 2005] : <font color='#008000'>** Renate pats Aryk's elbow. Well said. **</font><br>
+[Fri Mar 25 19:51:03 2005] : <B>Alan</B>: <font color='#000080'>"No, because that's not where I was going."</font><br>
+[Fri Mar 25 19:51:13 2005] : <B>Aryk</B>: <font color='#000080'>"Ah."</font><br>
+[Fri Mar 25 19:51:43 2005] : <B>Alan</B>: <font color='#000080'>"I'm definitely not going to say 'here, use my recondite magics of demonic witchcraft to save orphans from burning buildings and get kittens down from trees.'"</font><br>
+[Fri Mar 25 19:52:00 2005] : <B>Alan</B>: <font color='#000080'>"Mostly because you don't want said magics, and I don't think you're worthy of them to begin with."</font><br>
+[Fri Mar 25 19:52:09 2005] : <font color='#008000'>** Renate frowns, not liking the way this creature trivializes good works, but holds her peace. **</font><br>
+[Fri Mar 25 19:52:11 2005] : <B>Alan</B>: <font color='#000080'>"And that wasn't a jab to get you to try to prove yourself either, so nip that one in the bud."</font><br>
+[Fri Mar 25 19:52:12 2005] : <B>Aryk</B>: <font color='#000080'>"So you said before."</font><br>
+[Fri Mar 25 19:52:36 2005] : <B>Aryk</B>: <font color='#000080'>"..."</font><br>
+[Fri Mar 25 19:53:03 2005] : <B>Alan</B>: <font color='#000080'>"You're here because the Church is more or less turning you loose. And you want to know something?"</font><br>
+[Fri Mar 25 19:53:13 2005] : <B>Aryk</B>: <font color='#000080'>"....What?"</font><br>
+[Fri Mar 25 19:53:18 2005] : <B>Alan</B>: <font color='#000080'>"They are right. And not just right for them, but right for you."</font><br>
+[Fri Mar 25 19:53:54 2005] : <B>Alan</B>: <font color='#000080'>"I've watched you. Your old friend Garland pointed you out a while ago. You've got a strong moral backbone, even if nobody else believes it."</font><br>
+[Fri Mar 25 19:54:01 2005] : <B>Alan</B>: <font color='#000080'>"Except Lady Von Adler here, of course."</font><br>
+[Fri Mar 25 19:54:12 2005] : <font color='#008000'>** Aryk nods reluctantly **</font><br>
+[Fri Mar 25 19:54:26 2005] : <B>Alan</B>: <font color='#000080'>"But you've got a whole system holding you back."</font><br>
+[Fri Mar 25 19:54:48 2005] : <B>Alan</B>: <font color='#000080'>"Now, I know, the oldest trick in the book is saying 'You could use your power for <i>so much good</i> if only you give into evil!"</font><br>
+[Fri Mar 25 19:55:11 2005] : <B>Alan</B>: <font color='#000080'>"Fiddlesticks. I'm suggesting you use your power for so much good... period."</font><br>
+[Fri Mar 25 19:56:28 2005] : <B>Aryk</B>: <font color='#000080'>"What you're telling me is that the church doesn't believe in my judgement, and that it doesn't matter, because they're only holding me back anyway?  The same church whom without them I'd be nothing?"</font><br>
+[Fri Mar 25 19:56:34 2005] : <B>Alan</B>: <font color='#000080'>"You want to know a secret? It's one of those things the Church didn't tell you. I think it'll be a real eye-opener."</font><br>
+[Fri Mar 25 19:56:51 2005] : <font color='#0000ff'><i>whispering to Aryk,  you're doin' good, kid! keep it up!</i> </font><br>
+[Fri Mar 25 19:57:07 2005] : <B>Aryk</B>: <font color='#000080'>"Answer me first."</font><br>
+[Fri Mar 25 19:57:54 2005] : <B>Alan</B>: <font color='#000080'>"Okay. The clause where 'without the Church you'd be nothing' is false. The Church was one just one many levers you could have used to get yourself out of whatever ditch you started in."</font><br>
+[Fri Mar 25 19:58:08 2005] : <B>Alan</B>: <font color='#000080'>"I'm not omniscient. I don't know where you came from or what you've been through."</font><br>
+[Fri Mar 25 19:58:17 2005] : <B>Alan</B>: <font color='#000080'>"But you could have become anything you set your mind to."</font><br>
+[Fri Mar 25 19:58:33 2005] : <B>Renate</B>: <font color='#000080'>"All by himself?" Renate challenges.</font><br>
+[Fri Mar 25 19:59:01 2005] : <B>Alan</B>: <font color='#000080'>Kahan sighs. "Just because we demons value competition doesn't mean we turn up our noses at teamwork."</font><br>
+[Fri Mar 25 19:59:02 2005] : <B>Aryk</B>: <font color='#000080'>"I know what you mean.  But Ricard, an angel in service to Michael, chose me!"</font><br>
+[Fri Mar 25 19:59:29 2005] : <B>Alan</B>: <font color='#000080'>"Friendship is important. I'm saying that your friends would have come to you -- maybe different ones -- no matter what you did."</font><br>
+[Fri Mar 25 19:59:47 2005] : <B>Alan</B>: <font color='#000080'>"Right. Ricard, want to join the conversation? You've been awful quiet for a few weeks."</font><br>
+[Fri Mar 25 20:00:02 2005] : <B>Aryk</B>: <font color='#000080'>'wha?"</font><br>
+[Fri Mar 25 20:00:11 2005] : <B>Alan</B>: <font color='#000080'>Ricard manifests in the air beside Aryk, pale, glowing diffusely.</font><br>
+[Fri Mar 25 20:00:24 2005] : <B>Alan</B>: <font color='#000080'>"If you require," he says coldly.</font><br>
+[Fri Mar 25 20:00:35 2005] : <B>Aryk</B>: <font color='#000080'>"Ricard... heh... I'm surprised you could make it all the way here."</font><br>
+[Fri Mar 25 20:00:36 2005] : <B>Renate</B>: <font color='#000080'>"There is more to teamwork -- to building a person -- than friendship."</font><br>
+[Fri Mar 25 20:00:38 2005] : <font color='#008000'>** Aryk smiles **</font><br>
+[Fri Mar 25 20:00:51 2005] : <B>Alan</B>: <font color='#000080'>"Ricard comes with you, Aryk. It's only the Astral Plane he can't reach."</font><br>
+[Fri Mar 25 20:00:59 2005] : <B>Renate</B>: <font color='#000080'>"Hello, Ricard. I am sorry you must be here."</font><br>
+[Fri Mar 25 20:01:02 2005] : <B>Aryk</B>: <font color='#000080'>"I knew that."</font><br>
+[Fri Mar 25 20:01:10 2005] : <B>Alan</B>: <font color='#000080'>"It didn't take the Church specifically, is my point," Kahan says to Renate.</font><br>
+[Fri Mar 25 20:01:26 2005] : <B>Alan</B>: <font color='#000080'>"Did the Church do a good job? Sure. A better job than they knew."</font><br>
+[Fri Mar 25 20:01:36 2005] : <B>Renate</B>: <font color='#000080'>"Very well, then. But that is past, and the Church is part of his life, and you cannot handwave that away."</font><br>
+[Fri Mar 25 20:01:48 2005] : <B>Alan</B>: <font color='#000080'>"Because now our friend Aryk is following his own compass, and what do you know? Geographic north and magnetic north are two different things."</font><br>
+[Fri Mar 25 20:01:53 2005] : <font color='#008000'>** Aryk nods defiantly **</font><br>
+[Fri Mar 25 20:02:41 2005] : <B>Renate</B>: <font color='#000080'>"Are they? In Aryk's case, I mean; of course they're different geographically."</font><br>
+[Fri Mar 25 20:03:12 2005] : <B>Alan</B>: <font color='#000080'>"Come on, let's sit down for a bit." Kahan sweeps past you out of the dojo and takes a left into his "throne room." It's no larger than the drawing room back in Karlbotel.</font><br>
+[Fri Mar 25 20:03:25 2005] : <B>Alan</B>: <font color='#000080'>He waves a hand, and comfortable sofas appear around the dais.</font><br>
+[Fri Mar 25 20:03:34 2005] : <B>Alan</B>: <font color='#000080'>Kahan spins the simple wooden chair around and straddles it.</font><br>
+[Fri Mar 25 20:04:27 2005] : <font color='#008000'>** Aryk enters the room and reluctantly sits, leaving room for Renate **</font><br>
+[Fri Mar 25 20:04:49 2005] : <font color='#008000'>** Renate lets Aryk choose a seat, and sits beside him, her solidity and warmth rather comforting. **</font><br>
+[Fri Mar 25 20:05:17 2005] : <B>Alan</B>: <font color='#000080'>"Aryk, you know what's right and what's wrong. You can see evil at a glance. At first, sure, you've had a learning process. Sometimes you went off half-cocked. But you've been maturing, settling into a surer understanding."</font><br>
+[Fri Mar 25 20:05:42 2005] : <B>Aryk</B>: <font color='#000080'>"Uh-huh"</font><br>
+[Fri Mar 25 20:05:45 2005] : <B>Alan</B>: <font color='#000080'>"Funny how everyone around you sees your new perception of nuance, and your new ability to make confident decisions, as instability."</font><br>
+[Fri Mar 25 20:06:17 2005] : <B>Alan</B>: <font color='#000080'>"You walk out and talk to the Storm Wolves instead of just fighting them -- Renate assumes you've gone crazy. Nope! You made the right call."</font><br>
+[Fri Mar 25 20:06:30 2005] : <B>Renate</B>: <font color='#000080'>"Renate did no such thing."</font><br>
+[Fri Mar 25 20:06:38 2005] : <B>Aryk</B>: <font color='#000080'>"Yeah... wait... are you saying that because it's true... or are you wooing me with a false sense of personal security?"</font><br>
+[Fri Mar 25 20:06:56 2005] : <B>Renate</B>: <font color='#000080'>"The two are not mutually exclusive," Renate remarks.</font><br>
+[Fri Mar 25 20:07:12 2005] : <B>Alan</B>: <font color='#000080'>"Okay, I'm not going to argue any points about who felt how. That's not my department."</font><br>
+[Fri Mar 25 20:07:41 2005] : <B>Alan</B>: <font color='#000080'>"You go on Kip Sandriano's little gauntlet throwing match. You're 'playing his game' all of a sudden. What happens? You get respect in the community."</font><br>
+[Fri Mar 25 20:08:23 2005] : <B>Alan</B>: <font color='#000080'>"You put your musician in a cab, you go back and save your friends' lives. I could tell you some things about those cultists, too, wow."</font><br>
+[Fri Mar 25 20:08:29 2005] : <B>Alan</B>: <font color='#000080'>"What do you get? Grief!"</font><br>
+[Fri Mar 25 20:08:49 2005] : <B>Alan</B>: <font color='#000080'>"Now that's all settled. Everything's both hunky and dory. I know this."</font><br>
+[Fri Mar 25 20:08:58 2005] : <font color='#008000'>** Renate lowers her eyes, silent. **</font><br>
+[Fri Mar 25 20:09:21 2005] : <B>Alan</B>: <font color='#000080'>"So what's under the surface? Follow orders, Aryk! Get your head straight!"</font><br>
+[Fri Mar 25 20:09:42 2005] : <B>Renate</B>: <font color='#000080'>If her ill-considered scolding turns out to be what causes Aryk to be lost, she will <em>never</em> forgive herself.</font><br>
+[Fri Mar 25 20:09:42 2005] : <B>Alan</B>: <font color='#000080'>"You keep making good calls. Everything keeps working out. Is it blind luck? Or are you living life the way life wants you to live it?"</font><br>
+[Fri Mar 25 20:10:17 2005] : <B>Alan</B>: <font color='#000080'>"Now I can hear your little cogs spinning. They're saying, 'Kahan's buttering me up. I must resist his blandishments!'"</font><br>
+[Fri Mar 25 20:10:27 2005] : <font color='#008000'>** Aryk wants to say so many things right now.  However, he puts his hand on Renate's and squeezes a bit. **</font><br>
+[Fri Mar 25 20:10:31 2005] : <font color='#0000ff'>No Name (enter): 20:10</font><br>
+[Fri Mar 25 20:10:35 2005] : <B>Aryk</B>: <font color='#000080'>"That thought did cross my mind, yeah."</font><br>
+[Fri Mar 25 20:10:37 2005] : <B>Alan</B>: <font color='#000080'>"Do it. Resist! I'd rather you disbelieve everything I say, except this one. It's the secret I was talking about."</font><br>
+[Fri Mar 25 20:10:47 2005] : <B>Aryk</B>: <font color='#000080'>"Yes."</font><br>
+[Fri Mar 25 20:10:56 2005] : <B>Alan</B>: <font color='#000080'>"We demons? And angels, and faeries, and every damn thing..."</font><br>
+[Fri Mar 25 20:11:06 2005] : <B>Alan</B>: <font color='#000080'>"We are <i>shaped</i> by the beliefs of our followers."</font><br>
+[Fri Mar 25 20:11:16 2005] : <B>Alan</B>: <font color='#000080'>"That's why heretics are dealt with as they are."</font><br>
+[Fri Mar 25 20:11:34 2005] : <B>Alan</B>: <font color='#000080'>"One serious heresiarch and wham! Your whole religion's shot to shit, because your angel's torn between two sects."</font><br>
+[Fri Mar 25 20:12:03 2005] : <B>Alan</B>: <font color='#000080'>"A schism can lock out the moral compass of the entire order. Everyone still has powers, sure, but nobody has guidance!"</font><br>
+[Fri Mar 25 20:12:18 2005] : <B>Alan</B>: <font color='#000080'>"Ricard, is that or is that not why you haven't been talking to Aryk lately?"</font><br>
+[Fri Mar 25 20:12:31 2005] : <B>Alan</B>: <font color='#000080'>Ricard's wings twitch slightly. "It is."</font><br>
+[Fri Mar 25 20:12:58 2005] : <B>Alan</B>: <font color='#000080'>"Because you reflect his understanding? Because if he is conflicted, so are you?"</font><br>
+[Fri Mar 25 20:13:00 2005] : <B>Alan</B>: <font color='#000080'>"Correct."</font><br>
+[Fri Mar 25 20:13:07 2005] : <B>Aryk</B>: <font color='#000080'>"Ricard..."</font><br>
+[Fri Mar 25 20:13:15 2005] : <B>Alan</B>: <font color='#000080'>"Hell of a way to end up after a thousand years battling my kind, huh?"</font><br>
+[Fri Mar 25 20:13:38 2005] : <B>Alan</B>: <font color='#000080'>Ricard stares Kahan down. "I am honored to serve him, in heaven or in hell."</font><br>
+[Fri Mar 25 20:13:50 2005] : <font color='#008000'>** Aryk smiles **</font><br>
+[Fri Mar 25 20:13:52 2005] : <font color='#008000'>** Renate glances admiringly up at the angel. **</font><br>
+[Fri Mar 25 20:13:55 2005] : <B>Alan</B>: <font color='#000080'>"G.O.D., I love angels," Kahan says, with a sense of deep satisfaction.</font><br>
+[Fri Mar 25 20:14:06 2005] : <B>Alan</B>: <font color='#000080'>"You are the absolute best. I'm not being sarcastic."</font><br>
+[Fri Mar 25 20:14:13 2005] : <B>Aryk</B>: <font color='#000080'>"Somehow I find that a big hard to swallow."</font><br>
+[Fri Mar 25 20:14:17 2005] : <B>Alan</B>: <font color='#000080'>"Give me a few demon underlings half as good as you, and... hey! I have an idea!"</font><br>
+[Fri Mar 25 20:14:20 2005] : <B>Renate</B>: <font color='#000080'>"Of course. Because he does only as he must."</font><br>
+[Fri Mar 25 20:14:32 2005] : <B>Renate</B>: <font color='#000080'>"Is that not the definition of your faith, Lord?"</font><br>
+[Fri Mar 25 20:14:57 2005] : <B>Alan</B>: <font color='#000080'>"How about... you lead a heretical movement uniting our two churches!"</font><br>
+[Fri Mar 25 20:15:12 2005] : <font color='#008000'>** Aryk coughs **</font><br>
+[Fri Mar 25 20:15:26 2005] : <B>Alan</B>: <font color='#000080'>"Yeah, nobody goes for that one."</font><br>
+[Fri Mar 25 20:15:30 2005] : <B>Alan</B>: <font color='#000080'>"I keep tossing it out there, though."</font><br>
+[Fri Mar 25 20:15:38 2005] : <B>Renate</B>: <font color='#000080'>"You miss your brother that much, Lord?" Renate asks.</font><br>
+[Fri Mar 25 20:15:49 2005] : <B>Alan</B>: <font color='#000080'>"Nah, I just want his angels."</font><br>
+[Fri Mar 25 20:15:55 2005] : <B>Renate</B>: <font color='#000080'>"I see."</font><br>
+[Fri Mar 25 20:16:01 2005] : <B>Alan</B>: <font color='#000080'>"My mortal servants are so much better it's crazy, though. The ones that live, anyway."</font><br>
+[Fri Mar 25 20:16:02 2005] : <B>Renate</B>: <font color='#000080'>She gives Aryk a meaningful look.</font><br>
+[Fri Mar 25 20:16:26 2005] : <B>Aryk</B>: <font color='#000080'>"Okay, let me point something out to you first.  The Church of Michael, according to my sources, is already split in half in some regions."</font><br>
+[Fri Mar 25 20:16:37 2005] : <B>Alan</B>: <font color='#000080'>"The bureaucratic wing of my Church has spent so long trying to get Garland killed that he's seven-tenths immortal by now."</font><br>
+[Fri Mar 25 20:16:42 2005] : <B>Aryk</B>: <font color='#000080'>"The last thing I'd want to do is creat yet another faction."  </font><br>
+[Fri Mar 25 20:16:51 2005] : <B>Alan</B>: <font color='#000080'>"He's already got a Dracohelix, I'm going to see if I can get him to be the first dragonrank paladin."</font><br>
+[Fri Mar 25 20:17:09 2005] : <B>Aryk</B>: <font color='#000080'>"Great."</font><br>
+[Fri Mar 25 20:17:26 2005] : <B>Alan</B>: <font color='#000080'>"Ah, see, that's the other thing... you can have different aspects of your church, as long as the core beliefs and attitudes are the same."</font><br>
+[Fri Mar 25 20:18:07 2005] : <B>Renate</B>: <font color='#000080'>"So Kahanites can rescue treed kittens, and other Kahanites can, I don't know, set fire to the trees and eat the kittens."</font><br>
+[Fri Mar 25 20:18:11 2005] : <B>Alan</B>: <font color='#000080'>"I know how Michael does things. He's got those Black Shield guys forming neighborhood watches against roving mutants or whatever... then the other side of the same coin is your Northrock paladins wandering around to every bakery saying 'DEMONIC doughnuts?'"</font><br>
+[Fri Mar 25 20:18:20 2005] : <B>Alan</B>: <font color='#000080'>(Brb.)</font><br>
+[Fri Mar 25 20:19:02 2005] : <B>Rob</B>: <font color='#000080'>(waves)</font><br>
+[Fri Mar 25 20:19:10 2005] : <B>Aryk</B>: <font color='#000080'>"I choose not to take that on personally.  The church is 'more or less setting me loose.'  Well, that's fine."...</font><br>
+[Fri Mar 25 20:19:12 2005] : <B>Aryk</B>: <font color='#000080'>(Hey Rob!)</font><br>
+[Fri Mar 25 20:20:08 2005] : <B>Rob</B>: <font color='#000080'>(First time I can remember dropping in and knowing exactly, or at least close, what's going on. *g*)</font><br>
+[Fri Mar 25 20:20:26 2005] : <B>Renate</B>: <font color='#000080'>"The question, Aryk," Renate says, steady as ever, "has less to do with you, Lord Michael, or Lord Kahan, than the nature of their respective organizations. Do you truly believe it does not matter that your fellows in faith, should you league with Lord Kahan here, will be engaged in what you would consider abomination?"</font><br>
+[Fri Mar 25 20:21:11 2005] : <B>Renate</B>: <font color='#000080'>"And is Lord Kahan's freedom worth more to you than Lord Michael's aims, however imperfectly realized?"</font><br>
+[Fri Mar 25 20:21:51 2005] : <B>Renate</B>: <font color='#000080'>"Admitting, of course, that perfection among humans is an impossibility to begin with; it is somewhat unjust to attack the Church on that score."</font><br>
+[Fri Mar 25 20:21:54 2005] : <B>Alan</B>: <font color='#000080'>(My mom's watching over my shoulder, and says hi.)</font><br>
+[Fri Mar 25 20:22:04 2005] : <B>Renate</B>: <font color='#000080'>(hi, Alan's mom!)</font><br>
+[Fri Mar 25 20:22:06 2005] : <B>Aryk</B>: <font color='#000080'>"The Church is holding me back.  I was brought up learning you, Kahan, are the enemy.  I went out unto the world, and found out that your worshippers served coffee and saved villages.  Instead of feeling conflicted, I became what I am now.  A lone paladin, who loves and obeys Michael, not because they church says so, because I SAY SO."</font><br>
+[Fri Mar 25 20:22:12 2005] : <B>Rob</B>: <font color='#000080'>(Hi, Matt's mom!)</font><br>
+[Fri Mar 25 20:22:15 2005] : <B>Aryk</B>: <font color='#000080'>(Hi Mrs. MacDougall!)</font><br>
+[Fri Mar 25 20:22:57 2005] : <font color='#0000ff'><i>whispering to Aryk,  EXCELLENT.</i> </font><br>
+[Fri Mar 25 20:23:15 2005] : <B>Rien</B>: <font color='#004040'>(Hi, Alan's Mum!)</font><br>
+[Fri Mar 25 20:23:17 2005] : <B>Aryk</B>: <font color='#000080'>"Does that make me a heretic?  Who knows.  If it does, whatever."</font><br>
+[Fri Mar 25 20:23:47 2005] : <B>Alan</B>: <font color='#000080'>"Well, congratulations! I think we can call this a breakthrough!"</font><br>
+[Fri Mar 25 20:24:05 2005] : <B>Alan</B>: <font color='#000080'>"If I could pull it, I'd cut straight to us all standing on a miniature globe of the earth and clapping for you."</font><br>
+[Fri Mar 25 20:24:14 2005] : <B>Alan</B>: <font color='#000080'>"But sadly, there's a limit even to my powers."</font><br>
+[Fri Mar 25 20:24:26 2005] : <B>Aryk</B>: <font color='#000080'>"I will not forget what the church has done to me, I will not blame them for their faults.  I will move on, do what is right, and if a Kahanite gets in my way, I will kill him.  If a Kahanite serves me coffee, and it is good, I will give him a gracious tip."</font><br>
+[Fri Mar 25 20:24:37 2005] : <B>Aryk</B>: <font color='#000080'>"That, by the way is comforting to know... Kahan."</font><br>
+[Fri Mar 25 20:24:49 2005] : <font color='#0000ff'><i>whispering to Aryk,  zing!</i> </font><br>
+[Fri Mar 25 20:24:53 2005] : <B>Alan</B>: <font color='#000080'>(I have a feeling Matt and Rob are both /w-ing ROFLs at me. Or else I'm a gigantic dork.)</font><br>
+[Fri Mar 25 20:25:00 2005] : <B>Alan</B>: <font color='#000080'>(...okay, I'm just a gigantic dork.)</font><br>
+[Fri Mar 25 20:25:10 2005] : <B>Rob</B>: <font color='#000080'>(At least Aryk's got his friends at his back, though. I thihk at this point Ander was gone and Kodaku was caught up in playing warlord.)</font><br>
+[Fri Mar 25 20:25:30 2005] : <B>Rob</B>: <font color='#000080'>(You are a gigantic dork, but I did catch the reference. *g*)</font><br>
+[Fri Mar 25 20:25:35 2005] : <B>Alan</B>: <font color='#000080'>"Then check this out, Aryk."</font><br>
+[Fri Mar 25 20:25:53 2005] : <B>Alan</B>: <font color='#000080'>"One paladin, marching to his own drum, does not a heresy make."</font><br>
+[Fri Mar 25 20:26:15 2005] : <font color='#008000'>** Aryk 's shoulders sag a bit with relief **</font><br>
+[Fri Mar 25 20:26:33 2005] : <B>Alan</B>: <font color='#000080'>"And there's a big wave coming for the Church. It's up to you whether to swim against it."</font><br>
+[Fri Mar 25 20:26:44 2005] : <B>Alan</B>: <font color='#000080'>"Getting out now will save you from some serious choices."</font><br>
+[Fri Mar 25 20:26:57 2005] : <B>Alan</B>: <font color='#000080'>"I've already told Michael to batten down his hatches. I don't know if he believed me."</font><br>
+[Fri Mar 25 20:27:28 2005] : <B>Aryk</B>: <font color='#000080'>"Michael can plainly foresee something of that sort.  He doesn't need you to tell him."</font><br>
+[Fri Mar 25 20:28:01 2005] : <B>Alan</B>: <font color='#000080'>"The question now is still this, though: Are you following your own code or someone else's?"</font><br>
+[Fri Mar 25 20:28:10 2005] : <B>Renate</B>: <font color='#000080'>"The point being," Renate says, "that you could make a great difference to the Church, Aryk -- and unless I miss my guess, Lord Kahan would prefer you out of the action."</font><br>
+[Fri Mar 25 20:28:11 2005] : <B>Alan</B>: <font color='#000080'>"And if you're not entirely sure, you'd better <i>make</i> sure."</font><br>
+[Fri Mar 25 20:28:40 2005] : <B>Alan</B>: <font color='#000080'>Kahan shrugs. "I can't convince you what game I'm playing. You'll have to insinuate your own inferences."</font><br>
+[Fri Mar 25 20:28:56 2005] : <B>Renate</B>: <font color='#000080'>"I already have, Lord."</font><br>
+[Fri Mar 25 20:29:18 2005] : <B>Alan</B>: <font color='#000080'>"I just like seeing people acting entirely according to their own will. If you don't believe that's my only motivation, well, huh."</font><br>
+[Fri Mar 25 20:29:38 2005] : <B>Alan</B>: <font color='#000080'>"That just means you haven't followed my career or those of any of my followers."</font><br>
+[Fri Mar 25 20:29:42 2005] : <B>Renate</B>: <font color='#000080'>"Yes, I thought so. Untrammeled by the will or needs of others."</font><br>
+[Fri Mar 25 20:29:43 2005] : <B>Alan</B>: <font color='#000080'>"We are <i>not</i> big on agendas."</font><br>
+[Fri Mar 25 20:29:55 2005] : <B>Aryk</B>: <font color='#000080'>"I will follow my own code.  But if the Church needs me, I will help, if I choose.  And not because that's what you'd 'like to see.' "</font><br>
+[Fri Mar 25 20:29:56 2005] : <B>Renate</B>: <font color='#000080'>"Pure selfishness."</font><br>
+[Fri Mar 25 20:30:17 2005] : <B>Alan</B>: <font color='#000080'>"Perhaps you've heard this paradox before, and already come up with a crisp debunkation:"</font><br>
+[Fri Mar 25 20:30:36 2005] : <B>Alan</B>: <font color='#000080'>"Isn't the generosity of someone who has no external reason for it more valuable than the generosity of someone sworn to it?"</font><br>
+[Fri Mar 25 20:30:50 2005] : <B>Renate</B>: <font color='#000080'>"Generosity is generosity, and we all choose our 'external reasons.'"</font><br>
+[Fri Mar 25 20:31:29 2005] : <B>Alan</B>: <font color='#000080'>"Then it doesn't matter if the reasons for 'good' are selfish, any more than it matters if the reasons for 'evil' are selfless."</font><br>
+[Fri Mar 25 20:31:53 2005] : <B>Alan</B>: <font color='#000080'>"Just so you know, I like kittens, and I back them fully in their eternal war against trees."</font><br>
+[Fri Mar 25 20:32:46 2005] : <B>Aryk</B>: <font color='#000080'>"Kahan... at one time in my life I would have feared this meeting.  At another, I would have foolishly welcomed it and attempted to fight you.  Now... I choose to thank you for your information."</font><br>
+[Fri Mar 25 20:33:05 2005] : <B>Alan</B>: <font color='#000080'>"Oh, and my actual followers have a different paradox: they're so busy testing other people's beliefs that they don't get much time to act on their own."</font><br>
+[Fri Mar 25 20:33:20 2005] : <B>Alan</B>: <font color='#000080'>"I have long since given up wondering if that's hypocritical or not."</font><br>
+[Fri Mar 25 20:33:22 2005] : <B>Renate</B>: <font color='#000080'>"It is all interconnected," Renate says, and suddenly she has begun to look tired. "To be governed entirely by one's will is to be a blinkered horse, a child with its hands over its ears. We have to choose our associates and our reasons."</font><br>
+[Fri Mar 25 20:33:37 2005] : <B>Renate</B>: <font color='#000080'>"And we can't do it alone."</font><br>
+[Fri Mar 25 20:33:43 2005] : <B>Alan</B>: <font color='#000080'>"If 'hypo-critical' means an insufficient amount of criticism, then bring it on."</font><br>
+[Fri Mar 25 20:33:47 2005] : <font color='#008000'>** Aryk nods and puts his arm around Renate **</font><br>
+[Fri Mar 25 20:34:19 2005] : <B>Renate</B>: <font color='#000080'>"Aryk, the Church chose you. Won't you choose them back, now that you have the choice?"</font><br>
+[Fri Mar 25 20:34:20 2005] : <B>Aryk</B>: <font color='#000080'>"Now... may I ask you something, Kahan?"</font><br>
+[Fri Mar 25 20:34:38 2005] : <B>Alan</B>: <font color='#000080'>"You're seeing incompatibility where there is none. An association freely extended and freely accepted carries its own responsibilities."</font><br>
+[Fri Mar 25 20:34:43 2005] : <font color='#008000'>** Aryk winks at Renate **</font><br>
+[Fri Mar 25 20:34:53 2005] : <B>Alan</B>: <font color='#000080'>"My point is that when the association gives you grief, grief it back."</font><br>
+[Fri Mar 25 20:35:19 2005] : <B>Alan</B>: <font color='#000080'>"Anyway. Ask away. We can keep arguing in circles later. We have, quite literally, all the time in this specific world."</font><br>
+[Fri Mar 25 20:36:02 2005] : <B>Renate</B>: <font color='#000080'>"Go ahead, Aryk," Renate says, her head on his shoulder.</font><br>
+[Fri Mar 25 20:36:05 2005] : <B>Aryk</B>: <font color='#000080'>"You and your brother... Michael... why is it you have taken different sides, if you love him so much?"</font><br>
+[Fri Mar 25 20:36:33 2005] : <B>Renate</B>: <font color='#000080'>"Orthogonal sides, Aryk," Renate corrects. "Not opposed, just tangent."</font><br>
+[Fri Mar 25 20:36:34 2005] : <B>Alan</B>: <font color='#000080'>"You gonna say we're not both necessary?"</font><br>
+[Fri Mar 25 20:36:44 2005] : <B>Aryk</B>: <font color='#000080'>"It's apparant to me, Kahan, that you hold many of the same falues that angels do."</font><br>
+[Fri Mar 25 20:36:53 2005] : <B>Aryk</B>: <font color='#000080'>values</font><br>
+[Fri Mar 25 20:38:14 2005] : <B>Aryk</B>: <font color='#000080'>"I mean, why pick this gloomy cavern with despair in one corner and glowing man-sized boxes in the other, when you could be living eternally content in the Sacred Realm?"</font><br>
+[Fri Mar 25 20:38:29 2005] : <B>Aryk</B>: <font color='#000080'>"It's always occurred to me being a demon is... well, a real bummer."</font><br>
+[Fri Mar 25 20:38:44 2005] : <font color='#008000'>** Aryk smirks **</font><br>
+[Fri Mar 25 20:38:50 2005] : <B>Alan</B>: <font color='#000080'>"What's your definition of 'eternally content'? We are <i>so</i> not driven by the same physical needs as humans."</font><br>
+[Fri Mar 25 20:39:32 2005] : <B>Aryk</B>: <font color='#000080'>"Well... why play for the losing team?"</font><br>
+[Fri Mar 25 20:39:43 2005] : <B>Alan</B>: <font color='#000080'>"Not stooping to that one."</font><br>
+[Fri Mar 25 20:39:46 2005] : <B>Renate</B>: <font color='#000080'>"He hasn't lost yet."</font><br>
+[Fri Mar 25 20:39:53 2005] : <B>Aryk</B>: <font color='#000080'>"heh."</font><br>
+[Fri Mar 25 20:40:29 2005] : <B>Renate</B>: <font color='#000080'>"Respect your opponent: one of the first principles I was taught as a child."</font><br>
+[Fri Mar 25 20:41:34 2005] : <B>Aryk</B>: <font color='#000080'>"You're not evil.  I realize that.  Not behaviorally, anyway.  If you desire the churches of Michael and Kahan to merge, do something about it yourself."</font><br>
+[Fri Mar 25 20:41:57 2005] : <B>Alan</B>: <font color='#000080'>"That's completely different. No way the Church of Michael in its current state would see the light."</font><br>
+[Fri Mar 25 20:42:23 2005] : <B>Renate</B>: <font color='#000080'>"Nor would you, presumably. Because you're no more eager to give up your full will to the Church than Aryk here."</font><br>
+[Fri Mar 25 20:42:34 2005] : <B>Aryk</B>: <font color='#000080'>"Hmm..."</font><br>
+[Fri Mar 25 20:42:41 2005] : <B>Alan</B>: <font color='#000080'>"Each individual Kahanite could easily say 'okay, I suppose we can make a compromise and bolter peoples' beliefs in a less violent and confrontational way'..."</font><br>
+[Fri Mar 25 20:43:10 2005] : <B>Alan</B>: <font color='#000080'>"But can you see each individual Michaelite saying 'okay, I suppose there's <i>not</i> one and only one true 'good'."</font><br>
+[Fri Mar 25 20:43:39 2005] : <B>Aryk</B>: <font color='#000080'>"I suppose it really is down to the individual level then, as you said."</font><br>
+[Fri Mar 25 20:44:12 2005] : <B>Renate</B>: <font color='#000080'>"I'm not sure that's a fair statement of Michaelite belief," Renate says, sitting up.</font><br>
+[Fri Mar 25 20:44:20 2005] : <B>Alan</B>: <font color='#000080'>"Well, my point exactly. I would argue, and Lady Renate would disagree, that each individual code, as long as it's the product of self-examination and trial, as valid."</font><br>
+[Fri Mar 25 20:44:21 2005] : <B>Renate</B>: <font color='#000080'>"It's more like Michaelite belief as filtered through a very young Aryk."</font><br>
+[Fri Mar 25 20:44:37 2005] : <B>Alan</B>: <font color='#000080'>(Brb. Dryer.)</font><br>
+[Fri Mar 25 20:46:01 2005] : <B>Aryk</B>: <font color='#000080'>"I won't lie.  I desire more paladins to think as I do.  I can see the good I could bring if I branched off from the church.  But a good man once told me that I have to be careful when utilizing power.  I don't think it's my role to do that sort of thing.  If the Sacred Alliance wants my help, I will offer it."</font><br>
+[Fri Mar 25 20:47:03 2005] : <B>Renate</B>: <font color='#000080'>"I'm no theologian, but I think the official line is more that Good is indeed singular, but not necessarily well-understood. Can one person hope to understand it wholly? That is the reason for the Church -- so that a lot of us can work on it together."</font><br>
+[Fri Mar 25 20:47:19 2005] : <font color='#008000'>** Aryk turns to Renate.   **</font><br>
+[Fri Mar 25 20:47:38 2005] : <B>Renate</B>: <font color='#000080'>"To you, Lord, that work is unnecessary and indeed irrelevant."</font><br>
+[Fri Mar 25 20:48:09 2005] : <B>Renate</B>: <font color='#000080'>"But to Aryk?"</font><br>
+[Fri Mar 25 20:48:56 2005] : <B>Aryk</B>: <font color='#000080'>"You're right, sis.  And I think that I have heard here what it is I needed to learn."</font><br>
+[Fri Mar 25 20:49:19 2005] : <B>Renate</B>: <font color='#000080'>"Oh. Good. Want to fill me in?"</font><br>
+[Fri Mar 25 20:50:35 2005] : <B>Aryk</B>: <font color='#000080'>"Heh heh.  That I am my own person.  That I am in debt to the church, but not controlled in my thoughts by the church.  That I can help them, but am not forced to.  That my thoughts are not dangerous, but human, and still I fulfill the wishes of my Lord."</font><br>
+[Fri Mar 25 20:51:06 2005] : <B>Renate</B>: <font color='#000080'>Renate smiles. "That perhaps they cut you loose not because they didn't trust you -- but because they did."</font><br>
+[Fri Mar 25 20:51:22 2005] : <B>Aryk</B>: <font color='#000080'>"Had they not... I would not have been here."</font><br>
+[Fri Mar 25 20:51:38 2005] : <B>Alan</B>: <font color='#000080'>"Well, now that I've successfully played midwife to your borning soul..."</font><br>
+[Fri Mar 25 20:51:57 2005] : <B>Alan</B>: <font color='#000080'>Kahan says, "Let me tell you what this is about."</font><br>
+[Fri Mar 25 20:52:09 2005] : <font color='#008000'>** Aryk turns to face Kahan **</font><br>
+[Fri Mar 25 20:52:22 2005] : <B>Alan</B>: <font color='#000080'>"Every cleric in any stressful area gets sent here right when they're at a low."</font><br>
+[Fri Mar 25 20:52:42 2005] : <B>Alan</B>: <font color='#000080'>"Sometimes they leave the order. Sometimes they join me. Sometimes they come back reconfirmed."</font><br>
+[Fri Mar 25 20:53:05 2005] : <B>Alan</B>: <font color='#000080'>"Your friend Archideus up there was just the first, back in the First Age. I was a bit hard on him. The burning crown thing."</font><br>
+[Fri Mar 25 20:53:10 2005] : <B>Alan</B>: <font color='#000080'>"I've refined my techniques a bit."</font><br>
+[Fri Mar 25 20:53:18 2005] : <B>Alan</B>: <font color='#000080'>"Now I go more for comfortable sofas."</font><br>
+[Fri Mar 25 20:53:45 2005] : <B>Renate</B>: <font color='#000080'>(... as Dorothea valiantly resists the temptation to make a Monty Python joke)</font><br>
+[Fri Mar 25 20:54:06 2005] : <B>Aryk</B>: <font color='#000080'>(heh heh don't, you'll get docked pts.)</font><br>
+[Fri Mar 25 20:54:14 2005] : <B>Renate</B>: <font color='#000080'>(exactly)</font><br>
+[Fri Mar 25 20:54:19 2005] : <B>Alan</B>: <font color='#000080'>(I passed it up myself.)</font><br>
+[Fri Mar 25 20:55:07 2005] : <B>Aryk</B>: <font color='#000080'>"I can see why some would join you.  In fact, sometimes I think men like Garland Stahl and me are a lot more similar than most think.  But I think you know where I stand."</font><br>
+[Fri Mar 25 20:55:35 2005] : <B>Alan</B>: <font color='#000080'>"If you understand a little of why we do what we do, you're ahead of most."</font><br>
+[Fri Mar 25 20:55:42 2005] : <font color='#008000'>** Aryk nods **</font><br>
+[Fri Mar 25 20:55:43 2005] : <B>Alan</B>: <font color='#000080'>"Your Church spends a lot of effort demonizing us."</font><br>
+[Fri Mar 25 20:55:51 2005] : <B>Alan</B>: <font color='#000080'>Kahan grimaces. "You know what I mean."</font><br>
+[Fri Mar 25 20:55:52 2005] : <B>Aryk</B>: <font color='#000080'>"Well... you are demons."</font><br>
+[Fri Mar 25 20:55:59 2005] : <B>Aryk</B>: <font color='#000080'>"...heh..."</font><br>
+[Fri Mar 25 20:56:59 2005] : <B>Alan</B>: <font color='#000080'>"Now, Ghoster, Yves, Kristolan, Varrk, Tagrak, the list goes on... there are a lot of demons who are as evil as sin, which is by itself not a little evil."</font><br>
+[Fri Mar 25 20:57:19 2005] : <B>Alan</B>: <font color='#000080'>"You may not know this, but my people can hunt their followers down as quick as anything."</font><br>
+[Fri Mar 25 20:57:27 2005] : <B>Alan</B>: <font color='#000080'>"Just don't expect to like their methods."</font><br>
+[Fri Mar 25 20:58:19 2005] : <B>Aryk</B>: <font color='#000080'>"I understand.  I also understand that you chose their side.  So while I respect you, Kahan, I know my place just as you know yours."</font><br>
+[Fri Mar 25 20:58:37 2005] : <B>Alan</B>: <font color='#000080'>"Ghoster's actually watching the house while we've been chatting, and he informs me that a friend of yours has come knocking... he's resorted to trickery to stall him. Imagine Ghoster doing that."</font><br>
+[Fri Mar 25 20:58:53 2005] : <B>Alan</B>: <font color='#000080'>(Which is Rien's adventure, which we'll have to get to next session...)</font><br>
+[Fri Mar 25 20:58:53 2005] : <font color='#008000'>** Renate tenses. **</font><br>
+[Fri Mar 25 20:58:56 2005] : <B>Renate</B>: <font color='#000080'>"A friend?"</font><br>
+[Fri Mar 25 20:59:00 2005] : <B>Aryk</B>: <font color='#000080'>"Who would have guessed.  Er.. what friend?"</font><br>
+[Fri Mar 25 20:59:28 2005] : <B>Alan</B>: <font color='#000080'>"Well, by heredity you'd think he'd be a dragon, but as far as we can tell he's just a mixed-up human."</font><br>
+[Fri Mar 25 20:59:46 2005] : <B>Alan</B>: <font color='#000080'>"I'm scrying him right now. He has quite the temper, doesn't he?"</font><br>
+[Fri Mar 25 20:59:52 2005] : <B>Aryk</B>: <font color='#000080'>"Oh.  Damn."</font><br>
+[Fri Mar 25 21:00:11 2005] : <B>Renate</B>: <font color='#000080'>"Alone?"</font><br>
+[Fri Mar 25 21:00:20 2005] : <B>Alan</B>: <font color='#000080'>"I'll tell Ghoster to let him in."</font><br>
+[Fri Mar 25 21:00:30 2005] : <B>Renate</B>: <font color='#000080'>"How about you let us out instead?"</font><br>
+[Fri Mar 25 21:00:38 2005] : <font color='#008000'>** Aryk nods **</font><br>
+[Fri Mar 25 21:00:44 2005] : <B>Alan</B>: <font color='#000080'>Kahan's silent for a moment. "Hm. Seems the Ghost's ignoring me. Those two wouldn't happen to have a history, would they?"</font><br>
+[Fri Mar 25 21:00:58 2005] : <B>Aryk</B>: <font color='#000080'>"Er... "</font><br>
+[Fri Mar 25 21:01:00 2005] : <B>Renate</B>: <font color='#000080'>"As a matter of fact, yes. Oh, I don't like this."</font><br>
+[Fri Mar 25 21:01:11 2005] : <B>Aryk</B>: <font color='#000080'>"Crap.  That whole Taryn thing."</font><br>
+[Fri Mar 25 21:01:31 2005] : <font color='#008000'>** Aryk looks back to see if he can exit the hall the way they came in **</font><br>
+[Fri Mar 25 21:01:40 2005] : <B>Alan</B>: <font color='#000080'>"Let me guess. Something along the lines of 'come back to my domain and you're mine?'"</font><br>
+[Fri Mar 25 21:01:55 2005] : <B>Renate</B>: <font color='#000080'>"I shouldn't wonder, though I don't actually know."</font><br>
+[Fri Mar 25 21:02:04 2005] : <B>Alan</B>: <font color='#000080'>"Doesn't really matter if that's what was said, specifically, anyway. Ghoster tends to reinterpret things. A lot."</font><br>
+[Fri Mar 25 21:02:27 2005] : <B>Alan</B>: <font color='#000080'>"He can usually convince a jury of his peers, too. Since they're all demons, and he has something on everyone."</font><br>
+[Fri Mar 25 21:02:45 2005] : <B>Rien</B>: <font color='#004040'>(more of 'if you agree not to kill my pet rogue I'll let you go')</font><br>
+[Fri Mar 25 21:02:47 2005] : <B>Renate</B>: <font color='#000080'>"Could we <em>kindly</em> stop nattering and settle on a course of action?" Renate snaps.</font><br>
+[Fri Mar 25 21:03:00 2005] : <B>Alan</B>: <font color='#000080'>"Well, you're free to go... trouble is, you're not free to go to where your friend is. Ghoster's lured him into a different 'realm.'"</font><br>
+[Fri Mar 25 21:03:17 2005] : <B>Alan</B>: <font color='#000080'>"I can show you the front door, and that's about it."</font><br>
+[Fri Mar 25 21:03:27 2005] : <B>Renate</B>: <font color='#000080'>"We shall have to take it from there, then."</font><br>
+[Fri Mar 25 21:03:39 2005] : <B>Aryk</B>: <font color='#000080'>"We have to help him!  Let us go!"  Aryk takes Renate's hand.</font><br>
+[Fri Mar 25 21:03:40 2005] : <B>Alan</B>: <font color='#000080'>"Each demon lord, through force of will, creates his own Realm, in which he is supreme."</font><br>
+[Fri Mar 25 21:03:49 2005] : <B>Alan</B>: <font color='#000080'>"Your friend is in Ghoster's."</font><br>
+[Fri Mar 25 21:04:18 2005] : <B>Aryk</B>: <font color='#000080'>"I don't suppose one of those doors back there leads to Ghoster's Realm, then?  Not that I'm sure we can do much for Rien there."</font><br>
+[Fri Mar 25 21:04:34 2005] : <B>Alan</B>: <font color='#000080'>"Ah, now Ghoster's getting back to me... seems some angel he had his eye on went over to Faerie instead... and Rien was involved?"</font><br>
+[Fri Mar 25 21:04:42 2005] : <B>Alan</B>: <font color='#000080'>"That sort of thing comes back to bite you."</font><br>
+[Fri Mar 25 21:04:52 2005] : <font color='#008000'>** Aryk tenses **</font><br>
+[Fri Mar 25 21:05:09 2005] : <B>Alan</B>: <font color='#000080'>"Oh, I'll let you through... we have all the time, as I said. All this 'nattering' has taken mere seconds of real time."</font><br>
+[Fri Mar 25 21:05:13 2005] : <B>Alan</B>: <font color='#000080'>"Or as 'real' as time gets."</font><br>
+[Fri Mar 25 21:05:33 2005] : <B>Alan</B>: <font color='#000080'>Kahan gestures extravagantly, and a green-rimmed rift opens in the air before him.</font><br>
+[Fri Mar 25 21:05:38 2005] : <B>Renate</B>: <font color='#000080'>"My thanks, Lord, and apologies for the abruptness of our departure."</font><br>
+[Fri Mar 25 21:05:43 2005] : <B>Alan</B>: <font color='#000080'>"Non-stop to Ghosterville."</font><br>
+[Fri Mar 25 21:05:49 2005] : <font color='#008000'>** Aryk looks at Renate, then Ricard.   **</font><br>
+[Fri Mar 25 21:05:54 2005] : <B>Aryk</B>: <font color='#000080'>"Let's go, then."</font><br>
+[Fri Mar 25 21:06:03 2005] : <B>Renate</B>: <font color='#000080'>"Agreed."</font><br>
+[Fri Mar 25 21:06:04 2005] : <B>Alan</B>: <font color='#000080'>Ricard nods slowly. "Perhaps I can begin to be useful again..."</font><br>
+[Fri Mar 25 21:06:48 2005] : <B>Aryk</B>: <font color='#000080'>"Ricard, you never ceased to believe in me, and that's all that matters.  Aryk and the others jump through the rift.</font><br>
+[Fri Mar 25 21:07:02 2005] : <B>Renate</B>: <font color='#000080'>Log is off.</font><br>
+[Fri Mar 25 21:07:21 2005] : <B>Aryk</B>: <font color='#000080'>Well, that went surprisingly well.</font><br>
+[Fri Mar 25 21:07:24 2005] : <B>Renate</B>: <font color='#000080'>nice going, Matt!</font><br>
+[Fri Mar 25 21:07:29 2005] : <B>Aryk</B>: <font color='#000080'>Thanks!</font><br>
+[Fri Mar 25 21:07:36 2005] : <B>Renate</B>: <font color='#000080'>you didn't need me at all</font><br>
+[Fri Mar 25 21:07:45 2005] : <B>Alan</B>: <font color='#000080'>Hey, Matt and/or Rob -- who's coming to Too Much Light?</font><br>
+[Fri Mar 25 21:07:58 2005] : <B>Renate</B>: <font color='#000080'>Alan, you still up for tomorrow? Adrian said he might be.</font><br>
+[Fri Mar 25 21:08:03 2005] : <B>Aryk</B>: <font color='#000080'>I probably had the oppurtunity to get more answers, but I'm hppy.</font><br>
+[Fri Mar 25 21:08:10 2005] : <B>Aryk</B>: <font color='#000080'>When, Alan?</font><br>
+[Fri Mar 25 21:08:19 2005] : <B>Renate</B>: <font color='#000080'>Yeah, maybe. Couple things got dangled there, but I expect there would have been a price tag.</font><br>
+[Fri Mar 25 21:08:19 2005] : <B>Alan</B>: <font color='#000080'>Real Soon (tm).</font><br>
+[Fri Mar 25 21:08:26 2005] : <B>Rob</B>: <font color='#000080'>Huh? When?</font><br>
+[Fri Mar 25 21:08:29 2005] : <B>Alan</B>: <font color='#000080'><super>TM</super></font><br>
+[Fri Mar 25 21:08:31 2005] : <B>Alan</B>: <font color='#000080'>Hm.</font><br>
+[Fri Mar 25 21:08:36 2005] : <B>Alan</B>: <font color='#000080'>Tonight!</font><br>
+[Fri Mar 25 21:08:41 2005] : <B>Aryk</B>: <font color='#000080'>I'm going to help a friend install hardwood floors tomorrow.</font><br>
+[Fri Mar 25 21:08:42 2005] : <B>Alan</B>: <font color='#000080'>I'm sort of startled you weren't told.</font><br>
+[Fri Mar 25 21:08:53 2005] : <B>Alan</B>: <font color='#000080'>When are you starting?</font><br>
+[Fri Mar 25 21:09:03 2005] : <B>Alan</B>: <font color='#000080'>You could be back in the Zion area by 1am-ish.</font><br>
+[Fri Mar 25 21:09:03 2005] : <B>Aryk</B>: <font color='#000080'>Late afternoon.</font><br>
+[Fri Mar 25 21:09:12 2005] : <B>Alan</B>: <font color='#000080'>It's down in Chicago.</font><br>
+[Fri Mar 25 21:09:20 2005] : <B>Rob</B>: <font color='#000080'>I haven't heard anything. Justin said he was supposed to go out drinking with Liz tonight.</font><br>
+[Fri Mar 25 21:09:20 2005] : <B>Alan</B>: <font color='#000080'>Oh, you mean for Dragonhunt tomorrow.</font><br>
+[Fri Mar 25 21:09:20 2005] : <B>Renate</B>: <font color='#000080'>Well, we could still do Adrian's adventure.</font><br>
+[Fri Mar 25 21:09:30 2005] : <B>Renate</B>: <font color='#000080'>Er, yes, that's what I meant.</font><br>
+[Fri Mar 25 21:09:33 2005] : <B>Alan</B>: <font color='#000080'>We could. I'll try to be on.</font><br>
+[Fri Mar 25 21:09:35 2005] : <B>Renate</B>: <font color='#000080'>I think we have two conversations going here. :)</font><br>
+[Fri Mar 25 21:09:46 2005] : <B>Renate</B>: <font color='#000080'>Okay. If Adrian doesn't make it, we can let Coris and Renate have that talk.</font><br>
+[Fri Mar 25 21:09:47 2005] : <B>Aryk</B>: <font color='#000080'>I went there with you and Justin and Leslie that one time, remember Alan?  I think Jason might have gone too.</font><br>
+[Fri Mar 25 21:09:50 2005] : <B>Rob</B>: <font color='#000080'>Yes, we do. Three, possibly.:)</font><br>
+[Fri Mar 25 21:09:55 2005] : <B>Alan</B>: <font color='#000080'>Matt and Rob: Dave and Kim, at least, are going to Too Much Light. I thought Justin was too.</font><br>
+[Fri Mar 25 21:09:59 2005] : <B>Rien</B>: <font color='#004040'>what time</font><br>
+[Fri Mar 25 21:10:08 2005] : <B>Alan</B>: <font color='#000080'>Matt: It's different each time.</font><br>
+[Fri Mar 25 21:10:17 2005] : <B>Aryk</B>: <font color='#000080'>I know</font><br>
+[Fri Mar 25 21:10:21 2005] : <B>Renate</B>: <font color='#000080'>Adrian: 2 pm CST, so *counts* 7 am your time</font><br>
+[Fri Mar 25 21:10:36 2005] : <B>Rien</B>: <font color='#004040'>that I can do</font><br>
+[Fri Mar 25 21:10:36 2005] : <B>Alan</B>: <font color='#000080'>Lemme call Justin's house to make sure.</font><br>
+[Fri Mar 25 21:10:42 2005] : <B>Rob</B>: <font color='#000080'>Okay.</font><br>
+[Fri Mar 25 21:10:48 2005] : <B>Renate</B>: <font color='#000080'>Server can stay up as long as needed.</font><br>
+[Fri Mar 25 21:10:50 2005] : <B>Aryk</B>: <font color='#000080'>Dorothea, what was this about a party now?</font><br>
+[Fri Mar 25 21:10:58 2005] : <B>Rien</B>: <font color='#004040'>if I haven't gone totally insane trying to do my Project Managment homework before then</font><br>
+[Fri Mar 25 21:10:59 2005] : <B>Rob</B>: <font color='#000080'>Though this means I have to get dressed.:)</font><br>
+[Fri Mar 25 21:11:07 2005] : <B>Rien</B>: <font color='#004040'>which I'm damn close to doing</font><br>
+[Fri Mar 25 21:11:13 2005] : <B>Renate</B>: <font color='#000080'>Oh, not really a par-TAY party, just a bunch of people from that area heading up to my place on Tuesday sometime.</font><br>
+[Fri Mar 25 21:11:23 2005] : <B>Renate</B>: <font color='#000080'>As I understand it, Valori and Alan are driving.</font><br>
+[Fri Mar 25 21:11:24 2005] : <B>Rob</B>: <font color='#000080'>I was planning an evening of laying about and maybe doing some writing.</font><br>
+[Fri Mar 25 21:11:29 2005] : <B>Aryk</B>: <font color='#000080'>Alan, can I ride with you?</font><br>
+[Fri Mar 25 21:11:43 2005] : <B>Aryk</B>: <font color='#000080'>Or I'll drive, or whatever?</font><br>
+[Fri Mar 25 21:11:55 2005] : <B>Alan</B>: <font color='#000080'>To Chicago tonight, or to Madison Tuesday?</font><br>
+[Fri Mar 25 21:12:00 2005] : <B>Aryk</B>: <font color='#000080'>Madison</font><br>
+[Fri Mar 25 21:12:42 2005] : <B>Aryk</B>: <font color='#000080'>(Didn't no you were serious it was actually tonight.  Now way I can go tonight.  I'm running a fever. :-(   )</font><br>
+[Fri Mar 25 21:12:49 2005] : <B>Aryk</B>: <font color='#000080'>no?  Know?</font><br>
+[Fri Mar 25 21:12:58 2005] : <B>Aryk</B>: <font color='#000080'>Hi, I just graduated the third gread.</font><br>
+[Fri Mar 25 21:13:02 2005] : <B>Renate</B>: <font color='#000080'>and you're going to lay floor tomorrow? you're nuts, Matt!</font><br>
+[Fri Mar 25 21:13:02 2005] : <B>Aryk</B>: <font color='#000080'>hee hee</font><br>
+[Fri Mar 25 21:13:17 2005] : <B>Aryk</B>: <font color='#000080'>What can I say?  I owe the guy.</font><br>
+[Fri Mar 25 21:13:23 2005] : <B>Alan</B>: <font color='#000080'>Darn it... Rob, do you have Liz's cell number? I just got it from whoever answered at Justin's house (Wayne?) but it's a fax line.</font><br>
+[Fri Mar 25 21:13:38 2005] : <B>Alan</B>: <font color='#000080'>He said 847-740-0399</font><br>
+[Fri Mar 25 21:14:20 2005] : <B>Alan</B>: <font color='#000080'>And sure, you can ride with me, Matt. Just chip in some gas money.</font><br>
+[Fri Mar 25 21:14:28 2005] : <B>Rob</B>: <font color='#000080'>340-6999</font><br>
+[Fri Mar 25 21:14:58 2005] : <B>Aryk</B>: <font color='#000080'>I can do that.  Or I can drive up there and pick you up.  Whatever.  What time should I meet you at your place on Tuesday, Alan?</font><br>
+[Fri Mar 25 21:15:08 2005] : <B>Renate</B>: <font color='#000080'>I'll email you directions, Matt.</font><br>
+[Fri Mar 25 21:15:18 2005] : <B>Aryk</B>: <font color='#000080'>Okay, cool</font><br>
+[Fri Mar 25 21:15:23 2005] : <B>Alan</B>: <font color='#000080'>Better cc: to me, I probably lost my old ones.</font><br>
+[Fri Mar 25 21:15:36 2005] : <B>Renate</B>: <font color='#000080'>Will do.</font><br>
+[Fri Mar 25 21:15:37 2005] : <B>Rob</B>: <font color='#000080'>Can I ride with you to the city, Alan? I'm kinda hopped up on cold meds at the moment.</font><br>
+[Fri Mar 25 21:15:43 2005] : <B>Aryk</B>: <font color='#000080'>Speaking of which, I'll need directions to your place again, Alan.</font><br>
+[Fri Mar 25 21:15:52 2005] : <B>Aryk</B>: <font color='#000080'>Damn, everyone is sick.</font><br>
+[Fri Mar 25 21:16:10 2005] : <B>Rob</B>: <font color='#000080'>Yeah. I could guide Santa's sleigh with my nose right now.</font><br>
+[Fri Mar 25 21:16:19 2005] : <B>Aryk</B>: <font color='#000080'>Heh.</font><br>
+[Fri Mar 25 21:16:50 2005] : <B>Rob</B>: <font color='#000080'>I'll be amazed if my TML nametag doesn't say "Rudolph".</font><br>
+[Fri Mar 25 21:17:03 2005] : <B>Aryk</B>: <font color='#000080'>Alan what time should I meet you at your place on Tuesday?</font><br>
+[Fri Mar 25 21:17:14 2005] : <B>Alan</B>: <font color='#000080'>Okay. Rob, I just called Liz's cell and got no answer. Left a message saying "Who knows what the real plan was, but we're going to TML right now."</font><br>
+[Fri Mar 25 21:17:26 2005] : <B>Aryk</B>: <font color='#000080'>Heh</font><br>
+[Fri Mar 25 21:17:26 2005] : <B>Rob</B>: <font color='#000080'>Heh</font><br>
+[Fri Mar 25 21:17:29 2005] : <B>Alan</B>: <font color='#000080'>Matt, any time. Just gimme a call.</font><br>
+[Fri Mar 25 21:17:49 2005] : <B>Alan</B>: <font color='#000080'>If it wakes me up, I probably needed to be woken up anyway.</font><br>
+[Fri Mar 25 21:17:53 2005] : <B>Renate</B>: <font color='#000080'>As far as I'm concerned, you're welcome to show up any time after, say, 10:00 am.</font><br>
+[Fri Mar 25 21:17:54 2005] : <B>Aryk</B>: <font color='#000080'>Okay.  Maybe I could come over earlier and we can work out some ideas for the website?  Dorothea, what time should we come over?</font><br>
+[Fri Mar 25 21:18:05 2005] : <B>Aryk</B>: <font color='#000080'>Okay, cool.</font><br>
+[Fri Mar 25 21:18:05 2005] : <B>Renate</B>: <font color='#000080'>hey, I'm psychic! answered before you asked!</font><br>
+[Fri Mar 25 21:18:16 2005] : <B>Rob</B>: <font color='#000080'>Heh</font><br>
+[Fri Mar 25 21:18:29 2005] : <B>Aryk</B>: <font color='#000080'>Well, it won't be that early, I can assure you.  I'll have a hell of a time getting Alan up before 2:00 as it is.</font><br>
+[Fri Mar 25 21:18:38 2005] : <B>Renate</B>: <font color='#000080'>heh</font><br>
+[Fri Mar 25 21:18:51 2005] : <B>Renate</B>: <font color='#000080'>He can sleep in the car if he's not driving. :)</font><br>
+[Fri Mar 25 21:18:51 2005] : <B>Aryk</B>: <font color='#000080'>Alan I'll give you a call soon and we'll work something out.  </font><br>
+[Fri Mar 25 21:18:54 2005] : <B>Alan</B>: <font color='#000080'>Rob, if you're in for Chicago, we'll have to leave pretty soon to get there for the lineup. Out of the city limit at 9:45 at least.</font><br>
+[Fri Mar 25 21:18:57 2005] : <B>Aryk</B>: <font color='#000080'>True.</font><br>
+[Fri Mar 25 21:19:05 2005] : <B>Alan</B>: <font color='#000080'>AFK.</font><br>
+[Fri Mar 25 21:19:17 2005] : <B>Rob</B>: <font color='#000080'>I'm ready. Just need to throw a shirt on.</font><br>
+[Fri Mar 25 21:19:58 2005] : <B>Aryk</B>: <font color='#000080'>Okay, then, sweet.  How exciting!  I'll see you on Tuesday, D!  Er... sorry, Adrian.</font><br>
+[Fri Mar 25 21:20:02 2005] : <B>Renate</B>: <font color='#000080'>Okay, see you, Alan! and have fun!</font><br>
+[Fri Mar 25 21:20:08 2005] : <B>Renate</B>: <font color='#000080'>and I'll be on tomorrow afternoon.</font><br>
+[Fri Mar 25 21:20:22 2005] : <B>Renate</B>: <font color='#000080'>yes, you will see me on Tuesday, and you will be mightily disappointed, I'm sure</font><br>
+[Fri Mar 25 21:20:36 2005] : <B>Aryk</B>: <font color='#000080'>Why would you say something like that?</font><br>
+[Fri Mar 25 21:21:00 2005] : <B>Renate</B>: <font color='#000080'>'cuz it's true?</font><br>
+[Fri Mar 25 21:21:18 2005] : <B>Alan</B>: <font color='#000080'>Whatever.</font><br>
+[Fri Mar 25 21:21:23 2005] : <B>Alan</B>: <font color='#000080'>I enjoyed it.</font><br>
+[Fri Mar 25 21:21:26 2005] : <B>Aryk</B>: <font color='#000080'>Aw, c'mon now.  I've been looking forward to meeting you for a long time.  </font><br>
+[Fri Mar 25 21:21:51 2005] : <B>Alan</B>: <font color='#000080'>We introverts always scintillate slightly less when forced into a non-textual environment.</font><br>
+[Fri Mar 25 21:21:59 2005] : <B>Renate</B>: <font color='#000080'>Generally.</font><br>
+[Fri Mar 25 21:22:09 2005] : <B>Renate</B>: <font color='#000080'>But I'll try to be sure the food's decent.</font><br>
+[Fri Mar 25 21:22:28 2005] : <B>Aryk</B>: <font color='#000080'>Heh, okay.  I'll call you, Alan.  Goodnight, D.  'Night, Adrian!</font><br>
+[Fri Mar 25 21:22:31 2005] : <B>Alan</B>: <font color='#000080'>Whole Roast (tofu) Cow!</font><br>
+[Fri Mar 25 21:22:35 2005] : <B>Renate</B>: <font color='#000080'>:P</font><br>
+[Fri Mar 25 21:22:35 2005] : <B>Rien</B>: <font color='#004040'>night Matt</font><br>
+[Fri Mar 25 21:22:38 2005] : <B>Renate</B>: <font color='#000080'>night, Matt!</font><br>
+[Fri Mar 25 21:22:41 2005] : <B>Rob</B>: <font color='#000080'>Night, Matt</font><br>
+[Fri Mar 25 21:22:41 2005] : <font color='#ff0000'><B>Aryk</B>: Disconnecting from server...</font><br>
+[Fri Mar 25 21:22:41 2005] : <font color='#0000ff'>Aryk (exit): 21:22</font><br>
+[Fri Mar 25 21:23:08 2005] : <B>Renate</B>: <font color='#000080'>there will be no slayage of the fatted tofudebeest</font><br>
+[Fri Mar 25 21:23:37 2005] : <B>Alan</B>: <font color='#000080'>You know, Nikol and I had a running joke about what the various tofu versions of common foods would be named.</font><br>
+[Fri Mar 25 21:23:48 2005] : <B>Alan</B>: <font color='#000080'>The best two were "tofocolate" and "tofugar."</font><br>
+[Fri Mar 25 21:24:07 2005] : <B>Alan</B>: <font color='#000080'>So when I made her a computer, its network ID was "tofuter."</font><br>
+[Fri Mar 25 21:24:27 2005] : <B>Alan</B>: <font color='#000080'>I'm free to miss the happy things, as long as I occasionally go to her weblog and read about her latest suicide attempt.</font><br>
+[Fri Mar 25 21:24:35 2005] : <B>Alan</B>: <font color='#000080'>...I exaggerate. She seems a lot happier lately.</font><br>
+[Fri Mar 25 21:24:40 2005] : <B>Renate</B>: <font color='#000080'>That's good.</font><br>
+[Fri Mar 25 21:25:00 2005] : <B>Alan</B>: <font color='#000080'>Anyway, heading over to Rob's after I get some cash out of the bank.</font><br>
+[Fri Mar 25 21:25:02 2005] : <B>Renate</B>: <font color='#000080'>Aren't you supposed to be heading out the door, son?</font><br>
+[Fri Mar 25 21:25:11 2005] : <font color='#ff0000'><B>Alan</B>: Disconnecting from server...</font><br>
+[Fri Mar 25 21:25:12 2005] : <font color='#0000ff'>Alan (exit): 21:25</font><br>
+[Fri Mar 25 21:25:17 2005] : <B>Renate</B>: <font color='#000080'>okay, then, server going down!</font><br>
+[Fri Mar 25 21:25:22 2005] : <B>Renate</B>: <font color='#000080'>first, last, and only warning!</font><br>
+[Fri Mar 25 21:25:26 2005] : <font color='#ff0000'><B>Rien</B>: Disconnecting from server...</font><br>
+[Fri Mar 25 21:25:27 2005] : <font color='#0000ff'>Rien (exit): 21:25</font><br>
+[Fri Mar 25 21:25:28 2005] : <font color='#ff0000'>Game disconnected!</font><br>
