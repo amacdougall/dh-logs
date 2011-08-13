@@ -1,0 +1,9 @@
+# vim files
+*.swp
+*.swn
+*.swo
+*.vim
+*~
+
+# python generated files
+*.pyc
