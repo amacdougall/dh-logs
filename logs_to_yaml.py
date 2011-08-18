@@ -3,7 +3,10 @@ import os, re, json
 from BeautifulSoup import BeautifulSoup
 
 
-class LogArchiver:
+# "importing" in this case means converting the data from its mismash
+# of formats and storing it all in consistent JSON files; from there,
+# it can be exported to plaintext, HTML, ebook, etc.
+class LogImporter:
     """Converts OpenRPG log lines, files, or entire directories to JSON data."""
 
     def __init__(self):
@@ -192,7 +195,7 @@ class LogArchiver:
             raise "Output directory %s is not a valid directory" % output_dir
 
         input_files = [filename for filename in os.listdir(input_dir)
-                       if re.search(self.filename_pattern, filename)]
+                       if re.search(self.extension_pattern, filename)]
 
         for filename in input_files:
             # open a new log file for each input file
@@ -214,3 +217,63 @@ class LogArchiver:
     def stop_logging(self):
         if self.log_file is not None:
             self.log_file.close()
+
+# all methods in this class assume that the JSON data is sound; empty lines
+# so on should have been handled during the archiving stage.
+class LogExporter:
+    """Base class for log entry output. This default implementation generates
+    simple UTF-8 text files."""
+
+    def __init__(self):
+        self.entry_types = (
+            ("text", self.output_text),
+            ("statement", self.output_statement),
+            ("emote", self.output_emote)
+        )
+        self.input_extension_pattern = r".json$"
+        self.output_file_extension = ".txt"
+        self.line_separator = "\n"  # Unix style
+
+    def output_entry(self, log_entry):
+        for type, function in self.entry_types:
+            if log_entry["type"] == type:
+                return function(log_entry)
+        # if no entry type existed for this entry:
+        raise "No handler for entry type %s" % log_entry["type"]
+
+    # TODO: handle HTML tags in content
+    def output_text(self, log_entry):
+        return log_entry["content"]
+
+    def output_statement(self, log_entry):
+        return "%s: %s" % (log_entry["player"], log_entry["content"])
+
+    def output_emote(self, log_entry):
+        return log_entry["content"]
+
+    def output_file(self, input_filename, output_filename):
+        """Read the JSON input file and write it as plaintext."""
+        lines = [self.output_entry(entry) for entry
+                 in json.load(file(input_filename))]
+        output_file = file(output_filename, "w")
+        output_file.write(self.line_separator.join(lines))
+        output_file.write(self.line_separator)  # trailing newline is good form
+        output_file.close()
+
+    def output_directory(self, input_dir, output_dir):
+        if not os.path.exists(output_dir):
+            os.makedirs(output_dir)
+        elif not os.path.isdir(output_dir):
+            raise "Output directory %s is not a valid directory" % output_dir
+
+        input_files = [filename for filename in os.listdir(input_dir)
+                       if re.search(self.input_extension_pattern, filename)]
+
+        for filename in input_files:
+            input_filename = os.path.join(input_dir, filename)
+            output_filename = os.path.join(output_dir, filename)
+            output_filename = re.sub(self.input_extension_pattern,
+                                     self.output_file_extension,
+                                     output_filename)
+
+            self.output_file(input_filename, output_filename)
