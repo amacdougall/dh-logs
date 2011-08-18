@@ -7,8 +7,11 @@ class LogArchiver:
     """Converts OpenRPG log lines, files, or entire directories to JSON data."""
 
     def __init__(self):
+        self.extension_pattern = r"\.(html|txt)$"
         # openRPG timestamp pattern
         self.timestamp_pattern = r"^\[.+\d{4}\] : "
+        # if present in the first 10 lines, this is a Campfire log
+        self.campfire_log_pattern = r"^\s+<title>Campfire"
 
         # openRPG content patterns, through the years
         self.content_patterns = (
@@ -19,9 +22,6 @@ class LogArchiver:
             (r"^<font color='#\d{6}'>\*{2}", self.emote_v2),
             (r"^<p>\*{2} ", self.emote_v3),
         )
-
-        # if present in the first 10 lines, this is a Campfire log
-        self.campfire_log_pattern = r"^\s+<title>Campfire"
 
         self.log_file = None
         self.log_filename = None
@@ -138,9 +138,9 @@ class LogArchiver:
         """True if campfire_log_pattern is found in the first 10 lines."""
         log_file = file(filename)
         for n in range(0, 9):
-            if re.search(campfire_log_pattern, log_file.readline()):
-                return true
-        return false
+            if re.search(self.campfire_log_pattern, log_file.readline()):
+                return True
+        return False
 
     def is_text_log(self, filename):
         """True if filename ends with .txt."""
@@ -149,15 +149,15 @@ class LogArchiver:
     def process_file(self, input_file, output_file):
         self.log("Processing file: %s -> %s" % (input_file, output_file))
 
-        if is_campfire_log(input_file):
+        if self.is_campfire_log(input_file):
             self.log("Converting from Campfire transcript to JSON...")
-            log_entries = process_campfire_log(input_file)
-        elif is_text_log(input_file):
+            log_entries = self.process_campfire_log(input_file)
+        elif self.is_text_log(input_file):
             self.log("Converting from text format to JSON...")
-            log_entries = process_text_log(input_file)
+            log_entries = self.process_text_log(input_file)
         else:
             self.log("Converting from OpenRPG log to JSON...")
-            log_entries = process_openRPG_log(input_file)
+            log_entries = self.process_openRPG_log(input_file)
 
         json.dump(log_entries, file(output_file, "w"))
 
@@ -173,8 +173,9 @@ class LogArchiver:
     # this case is so simple we don't need line processing functions
     def process_text_log(self, input_file):
         """Break text file into paragraphs and return one entry per para."""
-        return [{"type": "text", "content": line.strip()} for line
-                in file(input_file).readlines() if line != "\n"]
+        lines = [line.strip() for line in file(input_file).readlines()]
+        lines = filter(None, lines)  # filter out empty lines
+        return [{"type": "text", "content": line} for line in lines]
         
 
     def process_openRPG_log(self, input_file):
@@ -191,17 +192,25 @@ class LogArchiver:
             raise "Output directory %s is not a valid directory" % output_dir
 
         input_files = [filename for filename in os.listdir(input_dir)
-                       if filename.endswith(".html")]
+                       if re.search(self.filename_pattern, filename)]
 
         for filename in input_files:
             # open a new log file for each input file
-            if self.log_file is None or self.log_file.closed:
-                self.log_file = file(self.log_filename, "w")
+            self.start_logging()
 
             input_filename = os.path.join(input_dir, filename)
             output_filename = os.path.join(output_dir, filename)
-            output_filename = output_filename.replace(".html", ".json")
+            output_filename = re.sub(self.extension_pattern, ".json", filename)
             self.process_file(input_filename, output_filename)
 
-            self.log_file.close()
+            self.stop_logging()
 
+    # utility
+    def start_logging(self):
+        if self.log_file is None or self.log_file.closed:
+            if self.log_filename is not None:
+                self.log_file = file(self.log_filename, "w")
+
+    def stop_logging(self):
+        if self.log_file is not None:
+            self.log_file.close()
