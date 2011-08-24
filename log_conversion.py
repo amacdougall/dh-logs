@@ -1,7 +1,14 @@
 # process OpenRPG HTML-like logs to YAML
 import os, re, json
 from BeautifulSoup import BeautifulSoup
+import template
 
+def sort(input_list):
+    """Returns a sorted shallow copy of the input list. There's gotta be a
+    native command for this, I'm just offline."""
+    output_list = list(input_list)
+    output_list.sort()
+    return output_list
 
 # "importing" in this case means converting the data from its mismash
 # of formats and storing it all in consistent JSON files; from there,
@@ -194,10 +201,10 @@ class LogImporter:
         elif not os.path.isdir(output_dir):
             raise "Output directory %s is not a valid directory" % output_dir
 
-        input_files = [filename for filename in os.listdir(input_dir)
+        input_filenames = [filename for filename in os.listdir(input_dir)
                        if re.search(self.extension_pattern, filename)]
 
-        for filename in input_files:
+        for filename in input_filenames:
             # open a new log file for each input file
             self.start_logging()
 
@@ -241,15 +248,15 @@ class LogExporter:
         # if no entry type existed for this entry:
         raise "No handler for entry type %s" % log_entry["type"]
 
-    # TODO: handle HTML tags in content
     def output_text(self, log_entry):
-        return log_entry["content"]
+        return self.strip_tags(log_entry["content"])
 
     def output_statement(self, log_entry):
-        return "%s: %s" % (log_entry["player"], log_entry["content"])
+        return "%s: %s" % (log_entry["player"],
+                           self.strip_tags(log_entry["content"]))
 
     def output_emote(self, log_entry):
-        return log_entry["content"]
+        return self.strip_tags(log_entry["content"])
 
     def output_file(self, input_filename, output_filename):
         """Read the JSON input file and write it as plaintext."""
@@ -261,19 +268,146 @@ class LogExporter:
         output_file.close()
 
     def output_directory(self, input_dir, output_dir):
+        # destructuring bind, in your face
+        input_filenames, output_filenames = self.build_file_lists(input_dir, output_dir)
+
+        for input_filename, output_filename in zip(input_filenames, output_filenames):
+            self.output_file(input_filename, output_filename)
+
+    # utility
+    def build_file_lists(self, input_dir, output_dir):
+        self.prepare_directory(output_dir)
+        input_filenames = self.build_input_filenames(input_dir)
+        output_filenames = self.build_output_filenames(input_dir, output_dir)
+        return (input_filenames, output_filenames)
+
+    def prepare_directory(self, output_dir):
         if not os.path.exists(output_dir):
             os.makedirs(output_dir)
         elif not os.path.isdir(output_dir):
             raise "Output directory %s is not a valid directory" % output_dir
 
-        input_files = [filename for filename in os.listdir(input_dir)
-                       if re.search(self.input_extension_pattern, filename)]
+    def build_input_filenames(self, input_dir):
+        return [os.path.join(input_dir, filename)
+                for filename in sort(os.listdir(input_dir))
+                if re.search(self.input_extension_pattern, filename)]
+    
+    def build_output_filenames(self, input_dir, output_dir):
+        # looks a bit weird, but I think it's readable!
+        return [os.path.join(output_dir,
+                             re.sub(self.input_extension_pattern,
+                                    self.output_file_extension,
+                                    filename))
+                for filename in sort(os.listdir(input_dir))]
 
-        for filename in input_files:
-            input_filename = os.path.join(input_dir, filename)
-            output_filename = os.path.join(output_dir, filename)
-            output_filename = re.sub(self.input_extension_pattern,
-                                     self.output_file_extension,
-                                     output_filename)
+    def strip_tags(self, line):
+        parsed = BeautifulSoup(line)
+        
+        def tag_text(parsed):
+            result = []
+            for element in parsed.contents:
+                if hasattr(element, "contents"):
+                    result.append(tag_text(element))
+                else:
+                    result.append(element)
+            return "".join(result)
+        
+        return tag_text(parsed)
 
-            self.output_file(input_filename, output_filename)
+
+class HTMLExporter(LogExporter):
+    """Generates HTML output; output_directory also creates an index file."""
+    def __init__(self):
+        LogExporter.__init__(self)
+
+        self.index_template = "index_template.djt"
+        self.log_template = "log_template.djt"
+        self.output_file_extension = ".html"
+        self.index_filename = "index.html"
+
+        self.line_templates = {
+            "index_link": u"<li><a href=\"%s\">%s</a></li>",
+            "text": u"<p>%s</p>",
+            "statement": u"<p><span class=\"player\">%s</span>: %s</p>",
+            "emote": u"<p>%s</p>",
+        }
+
+    def output_text(self, log_entry):
+        return self.line_templates["text"] % log_entry["content"]
+
+    def output_statement(self, log_entry):
+        return self.line_templates["statement"] % (log_entry["player"],
+                                                   log_entry["content"])
+
+    def output_emote(self, log_entry):
+        return self.line_templates["emote"] % log_entry["content"]
+
+    def output_file(self, input_filename, output_filename, previous=None, next=None):
+        lines = [self.output_entry(entry) for entry
+                 in json.load(file(input_filename))]
+
+        output_file = file(output_filename, "w")
+        output_lines = template.render(self.log_template, {
+            "previous": os.path.basename(previous) if previous else None,
+            "next": os.path.basename(next) if next else None,
+            "content": self.line_separator.join(lines),
+        })
+        output_file.writelines(output_lines)
+        output_file.close()
+
+    def output_directory(self, input_dir, output_dir):
+        # TODO: build index page
+        input_filenames, output_filenames = LogExporter.build_file_lists(
+            self, input_dir, output_dir)
+        for input_filename, output_dict in zip(input_filenames,
+                                               self.links(output_filenames)):
+            self.output_file(input_filename, output_dict["current"],
+                             previous=output_dict["previous"],
+                             next=output_dict["next"])
+
+        self.output_index_file(output_filenames, self.index_filename)
+
+    def output_index_file(self, output_filenames, output_filename):
+        link_lines = [self.build_index_link(filename)
+                      for filename in output_filenames]
+
+        output_file = file(self.index_filename, "w")
+        output_lines = template.render(self.index_template, {
+            "content": self.line_separator.join(link_lines),
+        })
+        output_file.writelines(output_lines)
+        output_file.close()
+
+    def build_index_link(self, filename):
+        """Create a line for insertion into the HTML index."""
+        url = os.path.basename(filename)
+        text = re.sub(r"\.\w+$", "", url)
+        return self.line_templates["index_link"] % (url, text)
+
+
+    def links(self, items):
+        """A generator which returns a previous/current/next dict for each item;
+        'previous' will be None for the first item, and 'next' will be None for
+        the last item."""
+        if len(items) == 0:
+            raise "Empty list passed to links"
+        else:
+            for n in range(0, len(items)):
+                if n == 0:
+                    yield {
+                        "previous": None,
+                        "current": items[n],
+                        "next": items[n+1]
+                    }
+                elif n == len(items) - 1:
+                    yield {
+                        "previous": items[n-1],
+                        "current": items[n],
+                        "next": None
+                    }
+                else:  # standard case
+                    yield {
+                        "previous": items[n-1],
+                        "current": items[n],
+                        "next": items[n+1]
+                    }

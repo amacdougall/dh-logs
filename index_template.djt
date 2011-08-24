@@ -1,0 +1,20 @@
+<html>
+<head>
+    <title>Dragonhunt: {{ date }}</title>
+    <style>
+    span.player {
+      font-weight: bold;
+    }
+    </style>
+    <script>
+
+    </script>
+</head>
+<body>
+  <div>
+    <ul>
+      {{ content }}
+    </ul>
+  </div>
+</body>
+</html>
