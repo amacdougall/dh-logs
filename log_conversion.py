@@ -1,7 +1,10 @@
-# process OpenRPG HTML-like logs to YAML
-import os, re, json
+# process OpenRPG HTML-like logs to JSON
+import os
+import re
+import json
 from BeautifulSoup import BeautifulSoup
 import template
+
 
 def sort(input_list):
     """Returns a sorted shallow copy of the input list. There's gotta be a
@@ -10,11 +13,12 @@ def sort(input_list):
     output_list.sort()
     return output_list
 
-# "importing" in this case means converting the data from its mismash
+
+# "importing" in this case means converting the data from its mishmash
 # of formats and storing it all in consistent JSON files; from there,
 # it can be exported to plaintext, HTML, ebook, etc.
-class LogImporter:
-    """Converts OpenRPG log lines, files, or entire directories to JSON data."""
+class LogImporter(object):
+    """Converts OpenRPG log lines, files, or whole directories to JSON data."""
 
     def __init__(self):
         self.extension_pattern = r"\.(html|txt)$"
@@ -48,7 +52,7 @@ class LogImporter:
 
     def statement_v1(self, line):
         """Parses a statement in the following format:
-            <B>(123) Alan</B>: <font color='#800040'>Example sentence.</font><br>
+            <B>(123) Alan</B>: <font color='#800040'>Example.</font><br>
         """
         self.log("Parsing as v1 statement: %s" % line)
         parsed = BeautifulSoup(line)
@@ -115,7 +119,6 @@ class LogImporter:
         return entry
 
     def emote_v2(self, line):
-        self.log("Parsing as v2 emote: %s" % line)
         parsed = BeautifulSoup(line)
         emote = parsed.font.renderContents()  # gives raw innerHTML
         content = re.search("^\*{2} (.+) \*{2}", emote).group(1)
@@ -126,7 +129,6 @@ class LogImporter:
         return entry
 
     def emote_v3(self, line):
-        self.log("Parsing as v3 emote: %s" % line)
         parsed = BeautifulSoup(line)
         emote = parsed.p.renderContents()
         content = re.search("^\*{2} (.+) \*{2}", emote).group(1)
@@ -141,7 +143,6 @@ class LogImporter:
         for pattern, function in self.content_patterns:
             if re.search(pattern, line):
                 return function(line)
-        self.log("Discarding input line: %s" % line)
         return None  # if nothing matched
 
     def is_campfire_log(self, filename):
@@ -186,7 +187,6 @@ class LogImporter:
         lines = [line.strip() for line in file(input_file).readlines()]
         lines = filter(None, lines)  # filter out empty lines
         return [{"type": "text", "content": line} for line in lines]
-        
 
     def process_openRPG_log(self, input_file):
         input_lines = file(input_file).readlines()
@@ -202,7 +202,7 @@ class LogImporter:
             raise "Output directory %s is not a valid directory" % output_dir
 
         input_filenames = [filename for filename in os.listdir(input_dir)
-                       if re.search(self.extension_pattern, filename)]
+                           if re.search(self.extension_pattern, filename)]
 
         for filename in input_filenames:
             # open a new log file for each input file
@@ -217,17 +217,20 @@ class LogImporter:
 
     # utility
     def start_logging(self):
+        "Enable log statements."
         if self.log_file is None or self.log_file.closed:
             if self.log_filename is not None:
                 self.log_file = file(self.log_filename, "w")
 
     def stop_logging(self):
+        "Disable log statements."
         if self.log_file is not None:
             self.log_file.close()
 
+
 # all methods in this class assume that the JSON data is sound; empty lines
 # so on should have been handled during the archiving stage.
-class LogExporter:
+class LogExporter(object):
     """Base class for log entry output. This default implementation generates
     simple UTF-8 text files."""
 
@@ -291,7 +294,7 @@ class LogExporter:
         return [os.path.join(input_dir, filename)
                 for filename in sort(os.listdir(input_dir))
                 if re.search(self.input_extension_pattern, filename)]
-    
+
     def build_output_filenames(self, input_dir, output_dir):
         # looks a bit weird, but I think it's readable!
         return [os.path.join(output_dir,
@@ -302,7 +305,7 @@ class LogExporter:
 
     def strip_tags(self, line):
         parsed = BeautifulSoup(line)
-        
+
         def tag_text(parsed):
             result = []
             for element in parsed.contents:
@@ -311,7 +314,7 @@ class LogExporter:
                 else:
                     result.append(element)
             return "".join(result)
-        
+
         return tag_text(parsed)
 
 
@@ -347,6 +350,7 @@ class HTMLExporter(LogExporter):
                  in json.load(file(input_filename))]
 
         output_file = file(output_filename, "w")
+        # TODO: also insert date, since there's a tag for it
         output_lines = template.render(self.log_template, {
             "previous": os.path.basename(previous) if previous else None,
             "next": os.path.basename(next) if next else None,
@@ -356,7 +360,7 @@ class HTMLExporter(LogExporter):
         output_file.close()
 
     def output_directory(self, input_dir, output_dir):
-        # TODO: build index page
+        # TODO: improve index page. Chapter titles? Can probably be manual.
         input_filenames, output_filenames = LogExporter.build_file_lists(
             self, input_dir, output_dir)
         for input_filename, output_dict in zip(input_filenames,
@@ -379,7 +383,7 @@ class HTMLExporter(LogExporter):
         output_file.close()
 
     def build_index_link(self, filename):
-        """Create a line for insertion into the HTML index."""
+        """Create a link for insertion into the HTML index."""
         url = os.path.basename(filename)
         text = re.sub(r"\.\w+$", "", url)
         return self.line_templates["index_link"] % (url, text)
