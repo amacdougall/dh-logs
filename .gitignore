@@ -7,3 +7,6 @@
 
 # python generated files
 *.pyc
+
+# source files
+dh_logs_*
