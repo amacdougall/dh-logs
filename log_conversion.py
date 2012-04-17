@@ -1,5 +1,6 @@
 # process OpenRPG HTML-like logs to JSON
 import os
+import shutil
 import re
 import json
 from BeautifulSoup import BeautifulSoup
@@ -159,6 +160,7 @@ class LogImporter(object):
 
     def process_file(self, input_file, output_file):
         self.log("Processing file: %s -> %s" % (input_file, output_file))
+        print "Processing file: %s -> %s" % (input_file, output_file)
 
         if self.is_campfire_log(input_file):
             self.log("Converting from Campfire transcript to JSON...")
@@ -195,6 +197,7 @@ class LogImporter(object):
 
     def process_directory(self, input_dir, output_dir):
         self.log("Processing dir: %s -> %s" % (input_dir, output_dir))
+        print "Processing dir: %s -> %s" % (input_dir, output_dir)
 
         if not os.path.exists(output_dir):
             os.makedirs(output_dir)
@@ -210,7 +213,8 @@ class LogImporter(object):
 
             input_filename = os.path.join(input_dir, filename)
             output_filename = os.path.join(output_dir, filename)
-            output_filename = re.sub(self.extension_pattern, ".json", filename)
+            output_filename = re.sub(self.extension_pattern,
+                                     ".json", output_filename)
             self.process_file(input_filename, output_filename)
 
             self.stop_logging()
@@ -323,8 +327,8 @@ class HTMLExporter(LogExporter):
     def __init__(self):
         LogExporter.__init__(self)
 
-        self.index_template = "index_template.djt"
-        self.log_template = "log_template.djt"
+        self.index_template = "templates/html/index_template.djt"
+        self.log_template = "templates/html/log_template.djt"
         self.output_file_extension = ".html"
         self.index_filename = "index.html"
 
@@ -415,3 +419,56 @@ class HTMLExporter(LogExporter):
                         "current": items[n],
                         "next": items[n+1]
                     }
+
+class EpubExporter(LogExporter):
+    """
+    Generates Markdown files for each chapter, then exports them as an ebook
+    using Pandoc.
+    """
+    def __init__(self):
+        LogExporter.__init__(self)
+
+        self.title_file = "templates/epub/title.md"
+        self.output_file_extension = ".md"  # intermediate files
+
+        self.line_templates = {
+            "chapter": u"# %s\n\n",
+            "text": u"%s\n",
+            "statement": u"**%s:** %s\n",
+            "emote": u"%s\n",
+        }
+
+    # TODO: for all of these, handle inline HTML? Or does Pandoc?
+
+    def output_text(self, log_entry):
+        return self.line_templates["text"] % log_entry["content"]
+
+    def output_statement(self, log_entry):
+        return self.line_templates["statement"] % (log_entry["player"],
+                                                   log_entry["content"])
+
+    def output_emote(self, log_entry):
+        return self.line_templates["emote"] % log_entry["content"]
+
+    def output_file(self, input_filename, output_filename):
+        """Read the JSON input file and write it as Pandoc markdown."""
+        lines = [self.output_entry(entry) for entry
+                 in json.load(file(input_filename))]
+
+        output_file = file(output_filename, "w")
+
+        chapter_title = re.search(r"\/(.+)\.json", input_filename).group(1)
+        chapter_title = chapter_title.replace("_", " ")
+        output_file.write(self.line_templates["chapter"] % chapter_title)
+
+        output_file.write(self.line_separator.join(lines))
+        output_file.write(self.line_separator)  # trailing newline is good form
+
+        output_file.close()
+
+    def output_directory(self, input_dir, output_dir):
+        # write title file to output directory
+        # shutil.copy(self.title_file, os.path.join(output_dir, self.title_file))
+        shutil.copy(self.title_file, output_dir)
+
+        LogExporter.output_directory(self, input_dir, output_dir)
