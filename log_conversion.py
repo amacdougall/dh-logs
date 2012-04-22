@@ -3,6 +3,8 @@ import os
 import shutil
 import re
 import json
+import codecs
+import subprocess
 from BeautifulSoup import BeautifulSoup
 import template
 
@@ -246,11 +248,11 @@ class LogExporter(object):
         )
         self.input_extension_pattern = r".json$"
         self.output_file_extension = ".txt"
-        self.line_separator = "\n"  # Unix style
+        self.line_separator = u"\n"  # Unix style
 
     def output_entry(self, log_entry):
-        for type, function in self.entry_types:
-            if log_entry["type"] == type:
+        for entry_type, function in self.entry_types:
+            if log_entry["type"] == entry_type:
                 return function(log_entry)
         # if no entry type existed for this entry:
         raise "No handler for entry type %s" % log_entry["type"]
@@ -259,7 +261,7 @@ class LogExporter(object):
         return self.strip_tags(log_entry["content"])
 
     def output_statement(self, log_entry):
-        return "%s: %s" % (log_entry["player"],
+        return u"%s: %s" % (log_entry["player"],
                            self.strip_tags(log_entry["content"]))
 
     def output_emote(self, log_entry):
@@ -267,9 +269,10 @@ class LogExporter(object):
 
     def output_file(self, input_filename, output_filename):
         """Read the JSON input file and write it as plaintext."""
+        print "Exporting file: %s -> %s" % (input_filename, output_filename)
         lines = [self.output_entry(entry) for entry
                  in json.load(file(input_filename))]
-        output_file = file(output_filename, "w")
+        output_file = codecs.open(output_filename, encoding="utf-8", mode="w")
         output_file.write(self.line_separator.join(lines))
         output_file.write(self.line_separator)  # trailing newline is good form
         output_file.close()
@@ -317,7 +320,7 @@ class LogExporter(object):
                     result.append(tag_text(element))
                 else:
                     result.append(element)
-            return "".join(result)
+            return u"".join(result)
 
         return tag_text(parsed)
 
@@ -330,7 +333,7 @@ class HTMLExporter(LogExporter):
         self.index_template = "templates/html/index_template.djt"
         self.log_template = "templates/html/log_template.djt"
         self.output_file_extension = ".html"
-        self.index_filename = "index.html"
+        self.index_basename = "index.html"
 
         self.line_templates = {
             "index_link": u"<li><a href=\"%s\">%s</a></li>",
@@ -349,15 +352,16 @@ class HTMLExporter(LogExporter):
     def output_emote(self, log_entry):
         return self.line_templates["emote"] % log_entry["content"]
 
-    def output_file(self, input_filename, output_filename, previous=None, next=None):
+    def output_file(self, input_filename, output_filename,
+                    previous_file=None, next_file=None):
         lines = [self.output_entry(entry) for entry
                  in json.load(file(input_filename))]
 
-        output_file = file(output_filename, "w")
+        output_file = codecs.open(output_filename, encoding="utf-8", mode="w")
         # TODO: also insert date, since there's a tag for it
         output_lines = template.render(self.log_template, {
-            "previous": os.path.basename(previous) if previous else None,
-            "next": os.path.basename(next) if next else None,
+            "previous": os.path.basename(previous_file) if previous_file else None,
+            "next": os.path.basename(next_file) if next_file else None,
             "content": self.line_separator.join(lines),
         })
         output_file.writelines(output_lines)
@@ -370,16 +374,17 @@ class HTMLExporter(LogExporter):
         for input_filename, output_dict in zip(input_filenames,
                                                self.links(output_filenames)):
             self.output_file(input_filename, output_dict["current"],
-                             previous=output_dict["previous"],
-                             next=output_dict["next"])
+                             previous_file=output_dict["previous"],
+                             next_file=output_dict["next"])
 
-        self.output_index_file(output_filenames, self.index_filename)
+        self.output_index_file(output_filenames,
+                               os.path.join(output_dir, self.index_basename))
 
-    def output_index_file(self, output_filenames, output_filename):
+    def output_index_file(self, output_filenames, index_filename):
         link_lines = [self.build_index_link(filename)
                       for filename in output_filenames]
 
-        output_file = file(self.index_filename, "w")
+        output_file = codecs.open(index_filename, encoding="utf-8", mode="w")
         output_lines = template.render(self.index_template, {
             "content": self.line_separator.join(link_lines),
         })
@@ -452,10 +457,13 @@ class EpubExporter(LogExporter):
 
     def output_file(self, input_filename, output_filename):
         """Read the JSON input file and write it as Pandoc markdown."""
+
+        print "Generating markdown: %s -> %s" % (input_filename,
+                                                 output_filename)
         lines = [self.output_entry(entry) for entry
                  in json.load(file(input_filename))]
 
-        output_file = file(output_filename, "w")
+        output_file = codecs.open(output_filename, encoding="utf-8", mode="w")
 
         chapter_title = re.search(r"\/(.+)\.json", input_filename).group(1)
         chapter_title = chapter_title.replace("_", " ")
@@ -466,9 +474,49 @@ class EpubExporter(LogExporter):
 
         output_file.close()
 
-    def output_directory(self, input_dir, output_dir):
-        # write title file to output directory
-        # shutil.copy(self.title_file, os.path.join(output_dir, self.title_file))
-        shutil.copy(self.title_file, output_dir)
+    def output_book(self, input_dir, output_path):
+        """
+        Converts JSON files from input_dir to a single epub file at output_path.
+        Temporarily creates a working folder named "temp" in the same location
+        as the destination output_path.
+        """
 
-        LogExporter.output_directory(self, input_dir, output_dir)
+        # derive temp_dir from output_path
+        temp_dir = os.path.join(os.path.split(output_path)[0], "temp")
+
+        # write pandoc files to temp folder
+        LogExporter.output_directory(self, input_dir, temp_dir)
+
+        # invoke pandoc to generate epub at output path
+        pandoc_input_files = [self.title_file]
+        pandoc_input_files.extend([os.path.join(temp_dir, filename)
+                                   for filename in os.listdir(temp_dir)])
+
+        # pandoc invocation format:
+        # pandoc -S --toc -o path/to/book.epub title.md input_file.md ...
+        arguments = ["pandoc"]
+        arguments.append("-S") # apply typographic niceties
+        arguments.append("--toc") # generate Table of Contents
+        arguments.extend(["-o", output_path])
+        arguments.extend(pandoc_input_files)
+
+        print "Building %s; this may take a few minutes." % output_path
+        subprocess.call(arguments)
+
+        # remove temp directory
+        shutil.rmtree(temp_dir)
+
+class MobiExporter(EpubExporter):
+    def __init__(self):
+        EpubExporter.__init__(self)
+
+    def output_book(self, input_dir, output_path):
+        epub_path = re.sub(r"\.mobi$", ".epub", output_path)
+        EpubExporter.output_book(self, input_dir, epub_path)
+
+        # now output_path contains foo.epub; invoke kindlegen
+        print "Building %s; this may take a few minutes." % output_path
+        subprocess.call(["kindlegen", epub_path])
+
+        # remove temp epub
+        os.remove(epub_path)
